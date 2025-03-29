@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unified_schema xmlns="http://iiitb.ac.in/team_5"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://iiitb.ac.in/team_5 univ_schema.xsd">
+    
+    <entity_type type = "SQL">
+        <id>1</id>
+        <name>Customer</name>
+        <ds>
+            <db>
+                <dbname>CustomerDB</dbname>
+                <host>localhost</host>
+                <port>3306</port>
+                <user>root</user>
+                <password>password</password>
+            </db>
+            <table>Customer</table>
+        </ds>
+    </entity_type>
+
+    <entity_type type = "Spreadsheet">
+        <id>2</id>
+        <name>Sellers</name>
+        <ds>
+            <file>Sellers.xlsx</file>
+            <sheet>Sellers</sheet>
+        </ds>
+    </entity_type>
+
+    <entity_type type = "XML">
+        <id>3</id>
+        <name>Purchase_Orders</name>
+        <ds>
+            <FolderName>PurchaseOrders</FolderName>
+        </ds> 
+    </entity_type>
+
+    <entity_type type = "PDF">
+        <id>4</id>
+        <name>Invoice</name>
+        <ds>
+            <FolderName>Invoices</FolderName>
+        </ds>
+    </entity_type>
+
+    <link>
+        <source>
+                <id>1</id>
+                <name>Customer</name>
+                <p_key>CustID</p_key>
+        </source>
+        <target>
+                <id>3</id>
+                <name>Purchase_Orders</name>
+                <f_key>CustID</f_key>
+        </target>
+        
+    </link>
+</unified_schema>

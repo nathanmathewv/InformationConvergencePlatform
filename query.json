@@ -1,0 +1,29 @@
+{
+    "Select" : [
+        {
+            "DSName": "Customer",
+            "Fields": ["CustomerID", "CustomerName"]
+        },
+        {
+            "DSName": "PurchaseOrders",
+            "Aggregation": ["None", "None"],
+            "Fields": [
+                "PurchaseOrder/OrderID", 
+                "PurchaseOrder/CustomerID"
+            ]
+        }
+    ],
+    "Where": [
+        {
+            "Value1": {
+                "DSName": "Customer",
+                "Field": "CustomerID"
+            },
+            "Value2": {
+                "DSName": "PurchaseOrders",
+                "Field": "PurchaseOrder/CustomerID"
+            },
+            "Operator": "="
+        }
+    ]
+}

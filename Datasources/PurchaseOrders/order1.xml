@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PurchaseOrder>
+    <OrderID>1</OrderID>
+    <CustomerID>5</CustomerID>
+    <SellerID>3</SellerID>
+    <Products>
+        <Product>
+            <ProductID>1</ProductID>
+            <ProductName>Mobile</ProductName>
+            <Quantity>2</Quantity>
+            <Price>10000</Price>
+        </Product>
+        <Product>
+            <ProductID>2</ProductID>
+            <ProductName>Tablet</ProductName>
+            <Quantity>1</Quantity>
+            <Price>20000</Price>
+        </Product>
+    </Products>
+
+    <OrderPlaced>
+        <day>10</day>
+        <month>4</month>
+        <year>2017</year>
+    </OrderPlaced>
+
+    <OrderDelivered>
+        <day>15</day>
+        <month>4</month>
+        <year>2017</year>
+    </OrderDelivered>
+
+    <OrderStatus>Delivered</OrderStatus>
+
+    <Payment>
+        <PaymentID>1</PaymentID>
+        <PaymentMethod>Credit Card</PaymentMethod>
+        <Amount>40000</Amount>
+        <PaymentDate>
+            <day>15</day>
+            <month>4</month>
+            <year>2017</year>
+        </PaymentDate>
+    </Payment>
+
+</PurchaseOrder>

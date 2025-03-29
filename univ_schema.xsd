@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://iiitb.ac.in/team_5"
+    xmlns="http://iiitb.ac.in/team_5"
+    elementFormDefault="qualified">
+    <xs:element name="unified_schema">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="entity_type" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="id" type="xs:int"/>
+                            <xs:element name="name" type="xs:string"/>
+                            <xs:element name="ds">
+                                <xs:complexType>
+                                    <xs:choice maxOccurs="unbounded">
+                                        <xs:element name="db">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="dbname" type="xs:string"/>
+                                                    <xs:element name="host" type="xs:string"/>
+                                                    <xs:element name="port" type="xs:int"/>
+                                                    <xs:element name="user" type="xs:string"/>
+                                                    <xs:element name="password" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="table" type="xs:string"/>
+                                        <xs:element name="file" type="xs:string"/>
+                                        <xs:element name="sheet" type="xs:string"/>
+                                        <xs:element name="FolderName" type="xs:string"/>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="type" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Table"/>
+                                    <xs:enumeration value="XML"/>
+                                    <xs:enumeration value="PDF"/>
+                                    <xs:enumeration value="SQL"/>
+                                    <xs:enumeration value="Spreadsheet"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="link" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="source">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="id" type="xs:int"/>
+                                        <xs:element name="name" type="xs:string"/>
+                                        <xs:element name="p_key" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="target">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="id" type="xs:int"/>
+                                        <xs:element name="name" type="xs:string"/>
+                                        <xs:element name="f_key" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
