@@ -6,24 +6,41 @@
         },
         {
             "DSName": "PurchaseOrders",
-            "Aggregation": ["None", "None"],
+        
             "Fields": [
                 "PurchaseOrder/OrderID", 
                 "PurchaseOrder/CustomerID"
             ]
         }
     ],
-    "Where": [
+    "Where":[
         {
-            "Value1": {
-                "DSName": "Customer",
-                "Field": "CustomerID"
+            "Literals":[
+            {
+                "Value1": "Customer.CustomerID",
+                "Value2": "PurchaseOrders.PurchaseOrder/CustomerID",
+                "Operator": "="
             },
-            "Value2": {
-                "DSName": "PurchaseOrders",
-                "Field": "PurchaseOrder/CustomerID"
+            {
+                "Value1": "Customer.CustomerName",
+                "Value2": "John Doe",
+                "Operator": "="
+            }
+            ]
+        },
+        {
+            "Literals":[
+            {
+                "Value1": "Customer.CustomerID",
+                "Value2": "PurchaseOrders.PurchaseOrder/CustomerID",
+                "Operator": "="
             },
-            "Operator": "="
+            {
+                "Value1": "PurchaseOrders.PurchaseOrder/OrderID",
+                "Value2": "12345",
+                "Operator": "="
+            }
+            ]
         }
     ]
 }
