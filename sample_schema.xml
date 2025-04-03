@@ -5,16 +5,16 @@
     
     <entity_type type = "SQL">
         <id>1</id>
-        <name>Customer</name>
+        <name>employee</name>
         <ds>
             <db>
-                <dbname>CustomerDB</dbname>
+                <dbname>companydb</dbname>
                 <host>localhost</host>
                 <port>3306</port>
                 <user>root</user>
                 <password>password</password>
             </db>
-            <table>Customer</table>
+            <table>employee</table>
         </ds>
     </entity_type>
 

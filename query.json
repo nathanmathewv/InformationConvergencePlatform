@@ -1,8 +1,8 @@
 {
     "Select" : [
         {
-            "DSName": "Customer",
-            "Fields": ["CustomerID", "CustomerName"]
+            "DSName": "employee",
+            "Fields": ["fname", "lname"]
         },
         {
             "DSName": "PurchaseOrders",
