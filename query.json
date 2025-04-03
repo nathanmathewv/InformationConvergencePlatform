@@ -1,12 +1,11 @@
 {
     "Select" : [
         {
-            "DSName": "employee",
-            "Fields": ["fname", "lname"]
+            "DSName": "Customer",
+            "Fields": ["CustomerID","fname", "lname"]
         },
         {
             "DSName": "PurchaseOrders",
-        
             "Fields": [
                 "PurchaseOrder/OrderID", 
                 "PurchaseOrder/CustomerID"
@@ -22,8 +21,8 @@
                 "Operator": "="
             },
             {
-                "Value1": "Customer.CustomerName",
-                "Value2": "John Doe",
+                "Value1": "Customer.fname",
+                "Value2": "Constant::John",
                 "Operator": "="
             }
             ]
@@ -36,8 +35,8 @@
                 "Operator": "="
             },
             {
-                "Value1": "PurchaseOrders.PurchaseOrder/OrderID",
-                "Value2": "12345",
+                "Value1": "PurchaseOrders.PurchaseOrder/CustomerID",
+                "Value2": "Constant::1002",
                 "Operator": "="
             }
             ]

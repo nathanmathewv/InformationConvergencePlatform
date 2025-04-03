@@ -29,7 +29,7 @@
 
     <entity_type type = "XML">
         <id>3</id>
-        <name>Purchase_Orders</name>
+        <name>PurchaseOrders</name>
         <ds>
             <FolderName>PurchaseOrders</FolderName>
         </ds> 
