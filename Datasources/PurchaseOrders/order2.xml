@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PurchaseOrder>
+    <OrderID>2</OrderID>
+    <CustomerID>8</CustomerID>
+    <SellerID>4</SellerID>
+    <Products>
+        <Product>
+            <ProductID>3</ProductID>
+            <ProductName>Laptop</ProductName>
+            <Quantity>1</Quantity>
+            <Price>30000</Price>
+        </Product>
+        <Product>
+            <ProductID>4</ProductID>
+            <ProductName>Monitor</ProductName>
+            <Quantity>2</Quantity>
+            <Price>8000</Price>
+        </Product>
+    </Products>
+    <OrderPlaced>
+        <day>12</day>
+        <month>5</month>
+        <year>2018</year>
+    </OrderPlaced>
+    <OrderDelivered>
+        <day>18</day>
+        <month>5</month>
+        <year>2018</year>
+    </OrderDelivered>
+    <OrderStatus>Processed</OrderStatus>
+    <Payment>
+        <PaymentID>2</PaymentID>
+        <PaymentMethod>Debit Card</PaymentMethod>
+        <Amount>46000</Amount>
+        <PaymentDate>
+            <day>18</day>
+            <month>5</month>
+            <year>2018</year>
+        </PaymentDate>
+    </Payment>
+</PurchaseOrder>

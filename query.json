@@ -8,7 +8,8 @@
             "DSName": "PurchaseOrders",
             "Fields": [
                 "PurchaseOrder/OrderID", 
-                "PurchaseOrder/CustomerID"
+                "PurchaseOrder/CustomerID",
+                "PurchaseOrder/OrderPlaced/day"
             ]
         }
     ],
