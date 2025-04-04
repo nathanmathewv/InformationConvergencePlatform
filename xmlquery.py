@@ -18,6 +18,7 @@ for select_item in data.get("Select", []):
     folder = os.path.join("Datasources", ds_name)
     xml_files = glob.glob(os.path.join(folder, "*.xml"))
     records = []
+    
     for xml_file in xml_files:
         try:
             tree = etree.parse(xml_file)
@@ -29,6 +30,7 @@ for select_item in data.get("Select", []):
             value = tree.xpath(f"string(//{field})")
             record[field.split('/')[-1]] = value  # use last part as column name
         records.append(record)
+
     df = pd.DataFrame(records)
 
 print(df)
