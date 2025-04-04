@@ -30,9 +30,5 @@ for select_item in data.get("Select", []):
             record[field.split('/')[-1]] = value  # use last part as column name
         records.append(record)
     df = pd.DataFrame(records)
-    results[ds_name] = df
 
-print("Data retrieved from Customer:")
-print(results.get("Customer"))
-print("\nData retrieved from PurchaseOrders:")
-print(results.get("PurchaseOrders"))
+print(df)
