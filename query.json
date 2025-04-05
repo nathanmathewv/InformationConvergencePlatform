@@ -1,8 +1,9 @@
 {
     "Select" : [
         {
-            "DSName": "Customer",
-            "Fields": ["CustomerID","fname", "lname"]
+            "DSName": "employee",
+            "Fields": ["fname", "lname"],
+            "display": ["fname"]
         },
         {
             "DSName": "PurchaseOrders",
@@ -10,7 +11,8 @@
                 "PurchaseOrder/OrderID", 
                 "PurchaseOrder/CustomerID",
                 "PurchaseOrder/OrderPlaced/day"
-            ]
+            ],
+            "display": []
         }
     ],
     "Where":[

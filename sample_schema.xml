@@ -7,13 +7,13 @@
         <id>1</id>
         <name>employee</name>
         <ds>
-            <db>
-                <dbname>companydb</dbname>
+            <dbconfig>
+                <database>companydb</database>
                 <host>localhost</host>
                 <port>3306</port>
                 <user>root</user>
-                <password>password</password>
-            </db>
+                <password>Test@123</password>
+            </dbconfig>
             <table>employee</table>
         </ds>
     </entity_type>
