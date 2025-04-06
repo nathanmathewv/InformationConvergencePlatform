@@ -2,30 +2,42 @@
     "Select" : [
         {
             "DSName": "employee",
-            "Fields": ["fname", "lname"],
-            "display": ["fname"]
+            "Fields": ["ssn","fname", "lname","dno"],
+            "display": ["fname","lname"]
+        },
+        {
+            "DSName": "department",
+            "Fields": ["dnumber", "dname"],
+            "display": ["dname"]
         },
         {
             "DSName": "PurchaseOrders",
             "Fields": [
                 "PurchaseOrder/OrderID", 
                 "PurchaseOrder/CustomerID",
-                "PurchaseOrder/OrderPlaced/day"
+                "PurchaseOrder/OrderPlaced/month"
             ],
-            "display": []
+            "display": ["PurchaseOrder/OrderID",
+                "PurchaseOrder/CustomerID",
+            "PurchaseOrder/OrderPlaced/month"]
         }
     ],
     "Where":[
         {
             "Literals":[
             {
-                "Value1": "Customer.CustomerID",
+                "Value1": "employee.ssn",
                 "Value2": "PurchaseOrders.PurchaseOrder/CustomerID",
                 "Operator": "="
             },
             {
-                "Value1": "Customer.fname",
+                "Value1": "employee.fname",
                 "Value2": "Constant::John",
+                "Operator": "="
+            },
+            {
+                "Value1": "employee.dno",
+                "Value2": "department.dnumber",
                 "Operator": "="
             }
             ]
@@ -33,13 +45,18 @@
         {
             "Literals":[
             {
-                "Value1": "Customer.CustomerID",
+                "Value1": "employee.ssn",
                 "Value2": "PurchaseOrders.PurchaseOrder/CustomerID",
                 "Operator": "="
             },
             {
                 "Value1": "PurchaseOrders.PurchaseOrder/CustomerID",
-                "Value2": "Constant::1002",
+                "Value2": "Constant::222222200",
+                "Operator": "="
+            },
+            {
+                "Value1": "employee.dno",
+                "Value2": "department.dnumber",
                 "Operator": "="
             }
             ]

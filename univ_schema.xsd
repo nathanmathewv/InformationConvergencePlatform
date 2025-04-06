@@ -14,6 +14,7 @@
                             <xs:element name="ds">
                                 <xs:complexType>
                                     <xs:choice maxOccurs="unbounded">
+                                        <xs:element name="dbconfig"></xs:element>
                                         <xs:element name="db">
                                             <xs:complexType>
                                                 <xs:sequence>

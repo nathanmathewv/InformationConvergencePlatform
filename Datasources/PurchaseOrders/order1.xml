@@ -2,7 +2,7 @@
 
 <PurchaseOrder>
     <OrderID>1</OrderID>
-    <CustomerID>5</CustomerID>
+    <CustomerID>555555500</CustomerID>
     <SellerID>3</SellerID>
     <Products>
         <Product>

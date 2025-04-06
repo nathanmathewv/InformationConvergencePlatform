@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PurchaseOrder>
     <OrderID>2</OrderID>
-    <CustomerID>8</CustomerID>
+    <CustomerID>222222200</CustomerID>
     <SellerID>4</SellerID>
     <Products>
         <Product>

@@ -8,13 +8,28 @@
         <name>employee</name>
         <ds>
             <dbconfig>
-                <database>companydb</database>
+                <database>company</database>
                 <host>localhost</host>
                 <port>3306</port>
                 <user>root</user>
-                <password>Test@123</password>
+                <password>4902617</password>
             </dbconfig>
             <table>employee</table>
+        </ds>
+    </entity_type>
+
+    <entity_type type = "SQL">
+        <id>5</id>
+        <name>department</name>
+        <ds>
+            <dbconfig>
+                <database>company</database>
+                <host>localhost</host>
+                <port>3306</port>
+                <user>root</user>
+                <password>4902617</password>
+            </dbconfig>
+            <table>department</table>
         </ds>
     </entity_type>
 
