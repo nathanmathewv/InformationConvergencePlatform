@@ -32,7 +32,6 @@ def resolve_queries(jsonquery, dbs):
     db = dbs[0]
     for i in dbs[1:]:
         db = db.merge(i, how = "cross")
-    print("GHVSGVD\n\n\n", db)
 
     select_ds_names = [entry["DSName"] for entry in jsonquery["Select"]]
     ds_index = dict()
@@ -47,7 +46,6 @@ def resolve_queries(jsonquery, dbs):
 
     new_db = pd.DataFrame(columns = db.columns)
     for row in db.iterrows():
-        print(row[1])
         valid = False
         for i in where_conditions:
             valid_in = True

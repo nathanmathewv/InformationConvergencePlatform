@@ -5,6 +5,7 @@ import glob
 from lxml import etree
 import mysql.connector
 from conditions import resolve_queries
+from prettytable import PrettyTable
 
 
 # Load XML file
@@ -20,8 +21,6 @@ namespace = {'ns': 'http://iiitb.ac.in/team_5'}
 
 # Extract the name and type attributes
 data_dict = {entity.find("ns:name", namespace).text: entity.attrib["type"] for entity in root.findall("ns:entity_type", namespace)}
-
-print(data_dict)
 
 sql_db_configs = {}
 for entity in root.findall("ns:entity_type", namespace):
@@ -63,8 +62,6 @@ for entry in jsonquery["Select"]:
         folder = os.path.join("Datasources", ds_name)
         xml_files = glob.glob(os.path.join(folder, "*.xml"))
         records = []
-
-        print(xml_files)
         
         for xml_file in xml_files:
             try:
@@ -97,9 +94,17 @@ for entry in jsonquery["Select"]:
 
 new_df = finalfinal[to_display]
 
-    
+table = PrettyTable()
+table.field_names = new_df.columns.tolist()
 
-print(finalfinal)
+for row in new_df.itertuples(index=False):
+    table.add_row(row)
+
+print(table)
+
+# save in txt file
+with open("output.txt", "w") as f:
+    f.write(str(table))
 
 # save in csv
 new_df.to_csv("final.csv", index = False)
