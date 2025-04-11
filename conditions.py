@@ -21,11 +21,32 @@ import random
 #     "PurchaseOrder/OrderID": [i for i in range(2001, 2001 + num_records + 1)]
 # }
 # df2 = pd.DataFrame(data_orders)
-
-# with open("query.json", "r") as f:
-#     jsonquery = json.load(f)
-
 # dbs = [df1, df2]
+
+def get_ds_specific_query(jsonquery):
+    #go through "Select" and get the DSName of each entry
+    ds_names = [entry["DSName"] for entry in jsonquery["Select"]]
+    where_conditions = jsonquery.get("Where", [])
+    conditions = dict()
+    for ds_name in ds_names:
+        conditions[ds_name] = []
+        for i in where_conditions:
+            temp_literals = []
+            for literal in i.get("Literals", []):
+                v1 = literal["Value1"]
+                v2 = literal["Value2"]
+                v1_cond = (v1[:10] == "Constant::" or v1[:v1.index(".")] == ds_name)
+                v2_cond = (v2[:10] == "Constant::" or v2[:v2.index(".")] == ds_name)
+                if(v1_cond and v2_cond):
+                    temp_literals.append(literal)
+            conditions[ds_name].append({"Literals": temp_literals})
+    return conditions
+            
+
+
+                    
+        
+
 
 
 def resolve_queries(jsonquery, dbs):
@@ -93,5 +114,7 @@ def resolve_queries(jsonquery, dbs):
 
     return new_db
 
-# new_db = resolve_queries(jsonquery, dbs)
-# print(new_db)
+with open("query.json", "r") as f:
+    jsonquery = json.load(f)
+
+#print(get_ds_specific_query(jsonquery))
