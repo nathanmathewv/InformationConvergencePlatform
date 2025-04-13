@@ -8,11 +8,11 @@
         <name>employee</name>
         <ds>
             <dbconfig>
-                <database>company</database>
+                <database>companydb</database>
                 <host>localhost</host>
                 <port>3306</port>
                 <user>root</user>
-                <password>4902617</password>
+                <password>Test@123</password>
             </dbconfig>
             <table>employee</table>
         </ds>
@@ -23,11 +23,11 @@
         <name>department</name>
         <ds>
             <dbconfig>
-                <database>company</database>
+                <database>companydb</database>
                 <host>localhost</host>
                 <port>3306</port>
                 <user>root</user>
-                <password>4902617</password>
+                <password>Test@123</password>
             </dbconfig>
             <table>department</table>
         </ds>

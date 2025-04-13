@@ -6,7 +6,7 @@ from lxml import etree
 import mysql.connector
 from conditions import resolve_queries
 from prettytable import PrettyTable
-
+from conditions import get_ds_specific_query
 
 # Load XML file
 xml_file = "sample_schema.xml"
@@ -39,6 +39,7 @@ for entity in root.findall("ns:entity_type", namespace):
 sql_ds_names = [entry["DSName"] for entry in jsonquery["Select"] if data_dict.get(entry["DSName"]) == "SQL"]
 xml_ds_names = [entry["DSName"] for entry in jsonquery["Select"] if data_dict.get(entry["DSName"]) == "XML"]
 
+specific_query = get_ds_specific_query(jsonquery)
 
 finaldf = []
 
@@ -47,8 +48,39 @@ for entry in jsonquery["Select"]:
     ds_name = entry["DSName"]
     fields = entry["Fields"]
     if ds_name in sql_ds_names and ds_name in sql_db_configs:
-        fields = ", ".join(fields)
-        query = f"SELECT {fields} FROM {ds_name}"
+        # Get where clause fields
+        conditions = specific_query.get(ds_name, [])
+        where_conditions_sql = []
+
+        for block in conditions:
+            literals_sql = []
+            for literal in block.get("Literals", []):
+                v1, v2 = literal["Value1"], literal["Value2"]
+                op = literal["Operator"]
+                def format_val(val):
+                    if val.startswith("Constant::"):
+                        return f"'{val.split('::')[1]}'"
+                    elif val.split(".")[0] == ds_name:
+                        return val.split(".")[1]
+                    return None
+                val1 = format_val(v1)
+                val2 = format_val(v2)
+                if val1 and val2:
+                    literals_sql.append(f"{val1} {op} {val2}")
+
+                # Add fields used in filtering to SELECT
+                for val in [v1, v2]:
+                    if not val.startswith("Constant::") and val.startswith(ds_name + "."):
+                        col = val.split(".", 1)[1]
+                        if col not in fields:
+                            fields.append(col)
+            if literals_sql:
+                where_conditions_sql.append(f"({' AND '.join(literals_sql)})")
+
+        fields_str = ", ".join(set(fields))
+        query = f"SELECT {fields_str} FROM {ds_name}"
+        if where_conditions_sql:
+            query += " WHERE " + " OR ".join(where_conditions_sql)
 
         # Connect using respective DB config
         conn = mysql.connector.connect(**sql_db_configs[ds_name])
@@ -111,4 +143,4 @@ new_df.to_csv("final.csv", index = False)
 
 
 
-conn.close()
+conn.close() 
