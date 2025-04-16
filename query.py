@@ -13,7 +13,7 @@ xml_file = "sample_schema.xml"
 tree = etree.parse(xml_file)
 root = tree.getroot()
 
-with open('query.json', 'r') as file:
+with open('query2.json', 'r') as file:
     jsonquery = json.load(file)
 
 # Define the namespace
@@ -81,6 +81,8 @@ for entry in jsonquery["Select"]:
         query = f"SELECT {fields_str} FROM {ds_name}"
         if where_conditions_sql:
             query += " WHERE " + " OR ".join(where_conditions_sql)
+
+        print(query)
 
         # Connect using respective DB config
         conn = mysql.connector.connect(**sql_db_configs[ds_name])

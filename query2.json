@@ -1,0 +1,29 @@
+{
+    "Select" : [
+        {
+            "DSName": "employee",
+            "Fields": ["ssn","fname", "lname","dno"],
+            "display": ["fname","lname"]
+        }
+    ],
+    "Where":[
+        {
+            "Literals":[
+            {
+                "Value1": "employee.salary",
+                "Value2": "Constant::33000",
+                "Operator": "<="
+            }
+            ]
+        },
+        {
+            "Literals":[
+            {
+                "Value1": "employee.fname",
+                "Value2": "Constant::Ahmad",
+                "Operator": "="
+            }
+            ]
+        }
+    ]
+}
