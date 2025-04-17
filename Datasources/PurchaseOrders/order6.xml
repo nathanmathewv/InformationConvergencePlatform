@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<PurchaseOrder>
+    <OrderID>5</OrderID>
+    <CustomerID>666666601</CustomerID>
+    <SellerID>3</SellerID>
+    <Products>
+        <Product>
+            <ProductID>100</ProductID>
+            <ProductName>Speaker</ProductName>
+            <Quantity>5</Quantity>
+            <Price>24139</Price>
+        </Product>
+        <Product>
+            <ProductID>65</ProductID>
+            <ProductName>Phone</ProductName>
+            <Quantity>1</Quantity>
+            <Price>37380</Price>
+        </Product>
+        <Product>
+            <ProductID>50</ProductID>
+            <ProductName>Monitor</ProductName>
+            <Quantity>3</Quantity>
+            <Price>16546</Price>
+        </Product>
+        <Product>
+            <ProductID>37</ProductID>
+            <ProductName>Charger</ProductName>
+            <Quantity>2</Quantity>
+            <Price>13381</Price>
+        </Product>
+    </Products>
+    <OrderPlaced>
+        <day>8</day>
+        <month>9</month>
+        <year>2018</year>
+    </OrderPlaced>
+    <OrderDelivered>
+        <day>12</day>
+        <month>7</month>
+        <year>2018</year>
+    </OrderDelivered>
+    <OrderStatus>Pending</OrderStatus>
+    <Payment>
+        <PaymentID>5</PaymentID>
+        <PaymentMethod>Credit Card</PaymentMethod>
+        <Amount>234475</Amount>
+        <PaymentDate>
+            <day>28</day>
+            <month>1</month>
+            <year>2018</year>
+        </PaymentDate>
+    </Payment>
+</PurchaseOrder>

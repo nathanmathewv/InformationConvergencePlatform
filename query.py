@@ -9,7 +9,7 @@ from prettytable import PrettyTable
 from conditions import get_ds_specific_query
 
 # Load XML file
-xml_file = "sample_schema.xml"
+xml_file = "sample_schema2.xml"
 tree = etree.parse(xml_file)
 root = tree.getroot()
 
