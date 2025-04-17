@@ -4,7 +4,7 @@ import mysql.connector
 import pandas as pd
 
 # Load XML file
-xml_file = "sample_schema.xml"
+xml_file = "sample_schema_.xml"
 tree = ET.parse(xml_file)
 root = tree.getroot()
 

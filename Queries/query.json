@@ -31,8 +31,8 @@
                 "Operator": "="
             },
             {
-                "Value1": "employee.salary",
-                "Value2": "Constant::33000",
+                "Value1": "employee.fname",
+                "Value2": "Constant::John",
                 "Operator": "="
             },
             {

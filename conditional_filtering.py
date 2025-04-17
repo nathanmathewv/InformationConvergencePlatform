@@ -26,6 +26,12 @@ import random
 def get_ds_specific_query(jsonquery):
     #go through "Select" and get the DSName of each entry
     ds_names = [entry["DSName"] for entry in jsonquery["Select"]]
+
+    fields = dict()
+    for ds in ds_names:
+        fields[ds] = [entry["Fields"] for entry in jsonquery["Select"] if entry["DSName"]==ds]
+        fields[ds] = fields[ds][0]
+
     where_conditions = jsonquery.get("Where", [])
     conditions = dict()
     for ds_name in ds_names:
@@ -40,19 +46,17 @@ def get_ds_specific_query(jsonquery):
                 if(v1_cond and v2_cond):
                     temp_literals.append(literal)
             conditions[ds_name].append({"Literals": temp_literals})
-    return conditions
-            
-
-
-                    
+    return conditions, fields         
         
-
-
 
 def resolve_queries(jsonquery, dbs):
     db = dbs[0]
     for i in dbs[1:]:
         db = db.merge(i, how = "cross")
+    
+    #print db columns
+    print("HELLO\n\n\n\n")
+    print(db)
 
     select_ds_names = [entry["DSName"] for entry in jsonquery["Select"]]
     ds_index = dict()
@@ -113,8 +117,5 @@ def resolve_queries(jsonquery, dbs):
 
 
     return new_db
-
-with open("query.json", "r") as f:
-    jsonquery = json.load(f)
 
 #print(get_ds_specific_query(jsonquery))
