@@ -3,7 +3,7 @@ from lxml import etree
 from prettytable import PrettyTable
 from conditional_filtering import get_ds_specific_query, resolve_queries
 from relational_queries import initialize_sql, run_sql_query
-from markup_queries import initialize_xml, run_xml_query
+from markdown_queries import initialize_xml, run_xml_query
 from execution_helper import get_display_fields
 
 datasource = "Datasources"
@@ -13,7 +13,7 @@ schema_xml_file = "Schemas/sample_schema_nathan.xml"
 tree = etree.parse(schema_xml_file)
 root = tree.getroot()
 
-with open('Queries/query.json', 'r') as file:
+with open('Queries/query3.json', 'r') as file:
     jsonquery = json.load(file)
 
 # Define the namespace
@@ -28,7 +28,7 @@ xml_ds_names, xml_files = initialize_xml(jsonquery, data_dict, datasource)
 
 specific_query, specific_fields = get_ds_specific_query(jsonquery)
 
-print(specific_query,specific_fields)
+# print(specific_query,specific_fields)
 
 merged_df = []
 
@@ -47,7 +47,7 @@ for entry in specific_query.items():
         print(df)
 
     merged_df.append(df)
-print(merged_df)
+# print(merged_df)
 merged_df = resolve_queries(jsonquery, merged_df)
 to_display = get_display_fields(jsonquery)
 
