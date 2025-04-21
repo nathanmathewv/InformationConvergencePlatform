@@ -4,11 +4,6 @@
             "DSName": "employee",
             "Fields": ["ssn","fname", "lname","dno"],
             "display": ["fname","lname"]
-        },
-        {
-            "DSName": "department",
-            "Fields": ["dnumber", "dname"],
-            "display": ["dname"]
         }
     ],
     "Where":[
@@ -18,10 +13,14 @@
                 "Value1": "employee.salary",
                 "Value2": "Constant::33000",
                 "Operator": "<="
-            },
+            }
+            ]
+        },
+        {
+            "Literals":[
             {
-                "Value1": "employee.dno",
-                "Value2": "department.dnumber",
+                "Value1": "employee.fname",
+                "Value2": "Constant::Ahmad",
                 "Operator": "="
             }
             ]

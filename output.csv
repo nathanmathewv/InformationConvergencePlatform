@@ -1,3 +1,5 @@
-PurchaseOrders.PurchaseOrder/OrderID,PurchaseOrders.PurchaseOrder/CustomerID,PurchaseOrders.PurchaseOrder/OrderPlaced/month
-7,555555501,3
-5,666666609,10
+Sellers.SellerID,Sellers.Name
+1,Alice Traders
+2,Bob Supplies
+3,Charlie Goods
+4,Delta Mart

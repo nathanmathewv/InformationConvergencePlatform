@@ -1,5 +1,6 @@
 import mysql.connector
 import pandas as pd
+import os
 
 def configure_sql_db(namespace,root):
     sql_db_configs = {}
@@ -67,4 +68,32 @@ def run_sql_query(conditions, sql_db, ds_name, fields):
 
     conn.close()
 
+    return df
+
+def configure_spreadsheet_ds(root, namespace):
+    spreadsheet_files = {}
+    for entity in root.findall("ns:entity_type", namespace):
+        if entity.attrib["type"] == "Spreadsheet":
+            name = entity.find("ns:name", namespace).text
+            file = entity.find("ns:ds/ns:file", namespace).text
+            sheet = entity.find("ns:ds/ns:sheet", namespace).text
+            spreadsheet_files[name] = {"file": file, "sheet": sheet}
+    return spreadsheet_files
+
+def get_spreadsheet_ds_names(jsonquery, data_dict):
+    return [entry["DSName"] for entry in jsonquery["Select"] if data_dict.get(entry["DSName"]) == "Spreadsheet"]
+
+def run_spreadsheet_query(ds_name, file_info, fields):
+    file_path = os.path.join("Datasources", file_info["file"])
+    sheet_name = file_info["sheet"]
+
+    df = pd.read_excel(file_path, sheet_name=sheet_name)
+
+    # Filter only requested fields if they exist
+    filtered_fields = [f for f in fields if f in df.columns]
+    df = df[filtered_fields]
+
+    # Prefix column names with DSName
+    df.columns = [f"{ds_name}.{col}" for col in df.columns]
+    
     return df

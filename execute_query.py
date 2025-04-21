@@ -2,18 +2,19 @@ import json
 from lxml import etree
 from prettytable import PrettyTable
 from conditional_filtering import get_ds_specific_query, resolve_queries
-from relational_queries import initialize_sql, run_sql_query
+from relational_queries import initialize_sql, run_sql_query, configure_spreadsheet_ds, get_spreadsheet_ds_names, run_spreadsheet_query
 from markdown_queries import initialize_xml, run_xml_query
 from execution_helper import get_display_fields
+import os
 
 datasource = "Datasources"
 
 # Load XML file
-schema_xml_file = "Schemas/sample_schema_nathan.xml"
+schema_xml_file = "Schemas/sample_schema_brij.xml"
 tree = etree.parse(schema_xml_file)
 root = tree.getroot()
 
-with open('Queries/query3.json', 'r') as file:
+with open('Queries/query5.json', 'r') as file:
     jsonquery = json.load(file)
 
 # Define the namespace
@@ -21,10 +22,14 @@ namespace = {'ns': 'http://iiitb.ac.in/team_5'}
 
 # Extract the name and type attributes
 data_dict = {entity.find("ns:name", namespace).text: entity.attrib["type"] for entity in root.findall("ns:entity_type", namespace)}
+# print(data_dict)
 
 # Initialize SQL DB configurations
 sql_ds_names, sql_db_configs = initialize_sql(root, namespace,jsonquery,data_dict)
 xml_ds_names, xml_files = initialize_xml(jsonquery, data_dict, datasource)
+
+spreadsheet_ds_names = get_spreadsheet_ds_names(jsonquery, data_dict)
+spreadsheet_files = configure_spreadsheet_ds(root, namespace)
 
 specific_query, specific_fields = get_ds_specific_query(jsonquery)
 
@@ -32,7 +37,7 @@ specific_query, specific_fields = get_ds_specific_query(jsonquery)
 
 merged_df = []
 
-# Execute queries for each SQL DSName
+# Execute queries for each DSName
 for entry in specific_query.items():
     ds_name = entry[0]
     conditions = entry[1]
@@ -45,6 +50,9 @@ for entry in specific_query.items():
         print("\n\n\n\n",conditions)
         df = run_xml_query(conditions, xml_files, ds_name, specific_fields[ds_name])
         print(df)
+    elif ds_name in spreadsheet_ds_names:
+        df = run_spreadsheet_query(ds_name, spreadsheet_files[ds_name], specific_fields[ds_name])
+
 
     merged_df.append(df)
 # print(merged_df)
