@@ -10,11 +10,11 @@ import os
 datasource = "Datasources"
 
 # Load XML file
-schema_xml_file = "Schemas/sample_schema_brij.xml"
+schema_xml_file = "Schemas/sample_schema_nathan.xml"
 tree = etree.parse(schema_xml_file)
 root = tree.getroot()
 
-with open('Queries/query5.json', 'r') as file:
+with open('Queries/query.json', 'r') as file:
     jsonquery = json.load(file)
 
 # Define the namespace
@@ -46,10 +46,7 @@ for entry in specific_query.items():
         df = run_sql_query(conditions, sql_db_configs[ds_name], ds_name, specific_fields[ds_name])
     elif ds_name in xml_ds_names:
         ds_query = specific_query[ds_name]
-        print(xml_files)
-        print("\n\n\n\n",conditions)
         df = run_xml_query(conditions, xml_files, ds_name, specific_fields[ds_name])
-        print(df)
     elif ds_name in spreadsheet_ds_names:
         df = run_spreadsheet_query(ds_name, spreadsheet_files[ds_name], specific_fields[ds_name])
 

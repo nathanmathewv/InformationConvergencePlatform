@@ -2,7 +2,7 @@
     "Select" : [
         {
             "DSName": "employee",
-            "Fields": ["ssn","fname", "lname","dno"],
+            "Fields": ["ssn","fname", "lname","dno","salary"],
             "display": ["fname","lname"]
         }
     ],
@@ -20,7 +20,7 @@
             "Literals":[
             {
                 "Value1": "employee.fname",
-                "Value2": "Constant::Ahmad",
+                "Value2": "Constant::Helga",
                 "Operator": "="
             }
             ]

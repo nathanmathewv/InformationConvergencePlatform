@@ -54,9 +54,6 @@ def resolve_queries(jsonquery, dbs):
     for i in dbs[1:]:
         db = db.merge(i, how = "cross")
     
-    #print db columns
-    print("HELLO\n\n\n\n")
-    print(db)
 
     select_ds_names = [entry["DSName"] for entry in jsonquery["Select"]]
     ds_index = dict()

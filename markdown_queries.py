@@ -48,58 +48,7 @@ def generate_xquery_string(conditions, fields):
     print(xquery.strip())
     return xquery.strip()
 
-# def run_xml_query(conditions, xml_files, ds_name, fields):
-#     records = []
-#     xquery_str = generate_xquery_string(conditions, fields)
 
-#     with PySaxonProcessor(license=False) as proc:
-#         xq_proc = proc.new_xquery_processor()
-
-#         for xml_file in xml_files[ds_name]:
-#             try:
-#                 # 1) Execute the XQuery
-#                 xq_proc.set_context(xdm_item=proc.parse_xml(xml_file_name=xml_file))
-#                 xq_proc.set_query_content(xquery_str)
-#                 result_seq = xq_proc.run_query_to_value()
-#                 if not result_seq:
-#                     continue
-
-#                 # 2) For each <result> fragment, parse with lxml
-#                 for entry in result_seq:
-#                     fragment = entry.string_value
-#                     wrapped = f"<root>{fragment}</root>"
-#                     entry_dom = etree.fromstring(wrapped.encode('utf-8'))
-#                     x = etree.tostring(entry_dom, encoding='unicode')
-#                     print("x",x)
-#                     pretty_xml = minidom.parseString(x).toprettyxml(indent="  ")
-#                     print(pretty_xml)   
-
-
-
-#                     # 3) For each field, gather all text() nodes under its <tag>
-#                     lists_of_vals = []
-#                     for field in fields:
-#                         tag = field.replace('/', '_')
-#                         texts = entry_dom.xpath(f".//{tag}//text()")
-#                         # strip whitespace and discard empty
-#                         vals = [t.strip() for t in texts if t.strip()]
-#                         if not vals:
-#                             vals = [""]
-#                         lists_of_vals.append(vals)
-
-#                     # 4) Cartesian product: one row per combination
-#                     for combo in itertools.product(*lists_of_vals):
-#                         row = {
-#                             f"{ds_name}.{field}": val
-#                             for field, val in zip(fields, combo)
-#                         }
-#                         records.append(row)
-
-#             except Exception as e:
-#                 print(f"Error processing {xml_file}: {e}")
-#                 continue
-
-#     return pd.DataFrame(records)
 
 def run_xml_query(conditions, xml_files, ds_name, fields):
     records = []
@@ -119,12 +68,12 @@ def run_xml_query(conditions, xml_files, ds_name, fields):
                 if not serialized:
                     continue
                 serialized = serialized.replace('<?xml version="1.0" encoding="UTF-8"?>', "")
-                print("serialized", serialized, type(serialized))
+
                 # 3) Wrap & parse once
                 wrapped = f"<root>{serialized}</root>"
-                print(wrapped)
+
                 doc = etree.fromstring(wrapped.encode("utf-8"))
-                print("doc", doc)
+
 
                 # 4) For each <result> …
                 for entry_dom in doc.findall("result"):

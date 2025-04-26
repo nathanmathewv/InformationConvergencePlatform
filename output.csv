@@ -1,5 +1,3 @@
-Sellers.SellerID,Sellers.Name
-1,Alice Traders
-2,Bob Supplies
-3,Charlie Goods
-4,Delta Mart
+employee.fname,employee.lname,department.dname,PurchaseOrders.PurchaseOrder/OrderID,PurchaseOrders.PurchaseOrder/CustomerID,PurchaseOrders.PurchaseOrder/OrderPlaced/month
+Evan,Wallis,Hardware,2,222222200,5
+John,James,Software,1,555555500,4
