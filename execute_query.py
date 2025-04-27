@@ -14,7 +14,7 @@ schema_xml_file = "Schemas/sample_schema_nathan.xml"
 tree = etree.parse(schema_xml_file)
 root = tree.getroot()
 
-with open('Queries/query.json', 'r') as file:
+with open('Queries/query3.json', 'r') as file:
     jsonquery = json.load(file)
 
 # Define the namespace
@@ -50,7 +50,9 @@ for entry in specific_query.items():
     elif ds_name in spreadsheet_ds_names:
         df = run_spreadsheet_query(ds_name, spreadsheet_files[ds_name], specific_fields[ds_name])
 
-
+    print(df)
+    #write df to csv
+    df.to_csv(f"{ds_name}.csv", index=False)
     merged_df.append(df)
 # print(merged_df)
 merged_df = resolve_queries(jsonquery, merged_df)
