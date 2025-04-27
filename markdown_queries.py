@@ -99,6 +99,7 @@ def run_xml_query(conditions, xml_files, ds_name, fields):
                                                 child_entries.append({m: i})
                                         else:
                                             child_entries.append(v)
+                                            break
                             values.extend(child_entries)
                         print(f"values: {values}")
                         row[display_column] = values

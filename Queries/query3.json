@@ -7,7 +7,7 @@
                 "PurchaseOrder/CustomerID",
                 "PurchaseOrder/OrderPlaced/month",
                 "PurchaseOrder/Products/Product/Price",
-                "PurchaseOrder/Products"
+                "PurchaseOrder/Products/Product"
             ],
             "display": ["PurchaseOrder/OrderID",
                 "PurchaseOrder/CustomerID",
