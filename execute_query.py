@@ -14,7 +14,7 @@ schema_xml_file = "Schemas/sample_schema_brij.xml"
 tree = etree.parse(schema_xml_file)
 root = tree.getroot()
 
-with open('Queries/query3.json', 'r') as file:
+with open('Queries/query.json', 'r') as file:
     jsonquery = json.load(file)
 
 # Define the namespace
@@ -60,6 +60,7 @@ merged_df = resolve_queries(jsonquery, merged_df)
 to_display = get_display_fields(jsonquery)
 
 merged_df = merged_df[to_display]
+print(merged_df)
 
 json_output = merged_df.to_json(orient="records", indent=4)
 

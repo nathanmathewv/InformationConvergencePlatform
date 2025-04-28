@@ -51,7 +51,9 @@ def get_ds_specific_query(jsonquery):
 
 def resolve_queries(jsonquery, dbs):
     db = dbs[0]
+    print(db,"\n\n\n\n")
     for i in dbs[1:]:
+        print(i,"\n\n\n\n")
         db = db.merge(i, how = "cross")
     
 
@@ -69,11 +71,13 @@ def resolve_queries(jsonquery, dbs):
     new_db = pd.DataFrame(columns = db.columns)
     for row in db.iterrows():
         valid = False
+        # print(row)
         for i in where_conditions:
             valid_in = True
             for literal in i.get("Literals", []):
                 v1 = literal["Value1"]
                 v2 = literal["Value2"]
+                
                 if(v1[:10] == "Constant::"):
                     v1 = v1[10:]
                 else:
@@ -82,6 +86,13 @@ def resolve_queries(jsonquery, dbs):
                     v2 = v2[10:]
                 else:
                     v2 = row[1][v2]
+                if(isinstance(v1,list)):
+                    # print("HELLOOOO")
+                    v1 = v1[0]
+                if(isinstance(v2,list)):
+                    # print("HELLOOOO1")
+                    v2 = v2[0]
+                # print(v1,v2,"HELLO")
                 
                 v1 = str(v1)
                 v2 = str(v2)
