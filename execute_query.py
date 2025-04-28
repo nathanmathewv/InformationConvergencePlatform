@@ -10,7 +10,7 @@ import os
 datasource = "Datasources"
 
 # Load XML file
-schema_xml_file = "Schemas/sample_schema_nathan.xml"
+schema_xml_file = "Schemas/sample_schema_brij.xml"
 tree = etree.parse(schema_xml_file)
 root = tree.getroot()
 
@@ -50,15 +50,22 @@ for entry in specific_query.items():
     elif ds_name in spreadsheet_ds_names:
         df = run_spreadsheet_query(ds_name, spreadsheet_files[ds_name], specific_fields[ds_name])
 
-    print(df)
+    # print(df)
     #write df to csv
-    df.to_csv(f"{ds_name}.csv", index=False)
+    # df.to_csv(f"{ds_name}.csv", index=False)
+    
     merged_df.append(df)
-# print(merged_df)
+
 merged_df = resolve_queries(jsonquery, merged_df)
 to_display = get_display_fields(jsonquery)
 
 merged_df = merged_df[to_display]
+
+json_output = merged_df.to_json(orient="records", indent=4)
+
+# Save it to a file
+with open("output.json", "w") as f:
+    f.write(json_output)
 
 table = PrettyTable()
 table.field_names = merged_df.columns.tolist()

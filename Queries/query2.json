@@ -2,7 +2,7 @@
     "Select" : [
         {
             "DSName": "employee",
-            "Fields": ["ssn","fname", "lname","dno"],
+            "Fields": ["ssn","fname", "lname","dno", "salary"],
             "display": ["fname","lname"]
         },
         {
