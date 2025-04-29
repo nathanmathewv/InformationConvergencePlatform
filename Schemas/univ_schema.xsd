@@ -26,6 +26,7 @@
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
+                                        <xs:element name="root" type="xs:string"/>
                                         <xs:element name="table" type="xs:string"/>
                                         <xs:element name="file" type="xs:string"/>
                                         <xs:element name="sheet" type="xs:string"/>

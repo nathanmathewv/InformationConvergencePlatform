@@ -27,7 +27,7 @@
                 <host>localhost</host>
                 <port>3306</port>
                 <user>root</user>
-                <password>Test@123</password>
+                <password>4902617</password>
             </dbconfig>
             <table>region</table>
         </ds>
@@ -47,6 +47,7 @@
         <name>PurchaseOrders</name>
         <ds>
             <FolderName>PurchaseOrders</FolderName>
+            <root>PurchaseOrder</root>
         </ds> 
     </entity_type>
 
@@ -55,6 +56,7 @@
         <name>Products</name>
         <ds>
             <FolderName>Products</FolderName>
+            <root>Product</root>
         </ds> 
     </entity_type>
 

@@ -10,7 +10,7 @@ import os
 datasource = "Datasources"
 
 # Load XML file
-schema_xml_file = "Schemas/sample_schema_brij.xml"
+schema_xml_file = "Schemas/sample_schema_nathan.xml"
 tree = etree.parse(schema_xml_file)
 root = tree.getroot()
 
@@ -26,7 +26,7 @@ data_dict = {entity.find("ns:name", namespace).text: entity.attrib["type"] for e
 
 # Initialize SQL DB configurations
 sql_ds_names, sql_db_configs = initialize_sql(root, namespace,jsonquery,data_dict)
-xml_ds_names, xml_files = initialize_xml(jsonquery, data_dict, datasource)
+xml_ds_names, xml_files, xml_roots = initialize_xml(root, jsonquery, data_dict, datasource)
 
 spreadsheet_ds_names = get_spreadsheet_ds_names(jsonquery, data_dict)
 spreadsheet_files = configure_spreadsheet_ds(root, namespace)
@@ -46,7 +46,7 @@ for entry in specific_query.items():
         df = run_sql_query(conditions, sql_db_configs[ds_name], ds_name, specific_fields[ds_name])
     elif ds_name in xml_ds_names:
         ds_query = specific_query[ds_name]
-        df = run_xml_query(conditions, xml_files, ds_name, specific_fields[ds_name])
+        df = run_xml_query(conditions, xml_files, ds_name, xml_roots[ds_name], specific_fields[ds_name])
     elif ds_name in spreadsheet_ds_names:
         df = run_spreadsheet_query(ds_name, spreadsheet_files[ds_name], specific_fields[ds_name])
 

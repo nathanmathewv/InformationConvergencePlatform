@@ -7,22 +7,45 @@ from lxml import etree
 import xmltodict
 import json
 
-def initialize_xml(jsonquery,data_dict,datasource):
+# def initialize_xml(root, jsonquery,data_dict,datasource):
+#     xml_ds_names = [entry["DSName"] for entry in jsonquery["Select"] if data_dict.get(entry["DSName"]) == "XML"]
+#     xml_files = defaultdict(list)
+#     for data in xml_ds_names:
+#         folder = os.path.join(datasource, data)
+#         xml_files[data] = glob.glob(os.path.join(folder, "*.xml"))
+#     return xml_ds_names, xml_files
+
+def initialize_xml(root, jsonquery, data_dict, datasource):
+    # Step 1: Build xml_root_dict from the schema DOM
+    xml_root_dict = {}
+    namespace = {'ns': root.tag.split('}')[0].strip('{')} 
+
+    for entity in root.findall('ns:entity_type', namespace):
+        if entity.get('type') == 'XML':
+            name = entity.find('ns:name', namespace).text
+            ds = entity.find('ns:ds', namespace)
+            root_tag = ds.find('ns:root', namespace).text
+            xml_root_dict[name] = root_tag
+    
     xml_ds_names = [entry["DSName"] for entry in jsonquery["Select"] if data_dict.get(entry["DSName"]) == "XML"]
     xml_files = defaultdict(list)
+    xml_roots = {}
+
     for data in xml_ds_names:
         folder = os.path.join(datasource, data)
         xml_files[data] = glob.glob(os.path.join(folder, "*.xml"))
-    return xml_ds_names, xml_files
+        xml_roots[data] = xml_root_dict.get(data)
 
-def generate_xquery_string(conditions, fields):
+    return xml_ds_names, xml_files, xml_root_dict
+
+def generate_xquery_string(conditions, fields, ds_name, root_name):
     where_clauses = []
 
     for cond_group in conditions:
         literals = cond_group.get("Literals", [])
         group_clauses = []
         for lit in literals:
-            left = lit["Value1"].split("::")[-1].replace("PurchaseOrders.PurchaseOrder/", "")
+            left = lit["Value1"].split("::")[-1].replace(f'{ds_name}.{root_name}/', "")
             right = lit["Value2"].split("::")[-1]
             op = lit["Operator"]
             if not right.isnumeric():
@@ -36,22 +59,22 @@ def generate_xquery_string(conditions, fields):
         where_expr = "true()"
 
     return_fields = "\n".join([
-        f"<{f.replace('/', '_')}>{{ $p/{f.replace('PurchaseOrder/', '')} }}</{f.replace('/', '_')}>"
+        f"<{f.replace('/', '_')}>{{ $p/{f.replace(f'{root_name}/', '')} }}</{f.replace('/', '_')}>"
         for f in fields
     ])
 
     xquery = f"""
-    for $p in /PurchaseOrder
+    for $p in /{root_name}
     where {where_expr}
     return <result>{return_fields}</result>
     """
     print(xquery.strip())
     return xquery.strip()
 
-def run_xml_query(conditions, xml_files, ds_name, fields):
+def run_xml_query(conditions, xml_files, ds_name, root_name, fields):
     records = []
 
-    xquery_str = generate_xquery_string(conditions, fields)
+    xquery_str = generate_xquery_string(conditions, fields, ds_name, root_name)
 
     with PySaxonProcessor(license=False) as proc:
         xq_proc = proc.new_xquery_processor()
