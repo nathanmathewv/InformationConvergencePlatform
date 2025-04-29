@@ -1,53 +1,36 @@
 <?xml version="1.0" ?>
 <PurchaseOrder>
     <OrderID>6</OrderID>
-    <CustomerID>666666601</CustomerID>
-    <SellerID>3</SellerID>
-    <Products>
-        <Product>
-            <ProductID>100</ProductID>
-            <ProductName>Speaker</ProductName>
-            <Quantity>5</Quantity>
-            <Price>24139</Price>
-        </Product>
-        <Product>
-            <ProductID>65</ProductID>
-            <ProductName>Phone</ProductName>
-            <Quantity>1</Quantity>
-            <Price>37380</Price>
-        </Product>
-        <Product>
-            <ProductID>50</ProductID>
-            <ProductName>Monitor</ProductName>
-            <Quantity>3</Quantity>
-            <Price>16546</Price>
-        </Product>
-        <Product>
-            <ProductID>37</ProductID>
-            <ProductName>Charger</ProductName>
+    <CustomerID>206</CustomerID>
+    <SellerID>2</SellerID>
+    <OrderItems>
+        <OrderItem>
+            <ProductID>10</ProductID>
             <Quantity>2</Quantity>
-            <Price>13381</Price>
-        </Product>
-    </Products>
+        </OrderItem>
+        <OrderItem>
+            <ProductID>13</ProductID>
+            <Quantity>3</Quantity>
+        </OrderItem>
+    </OrderItems>
     <OrderPlaced>
-        <day>8</day>
-        <month>9</month>
-        <year>2018</year>
+        <day>1</day>
+        <month>5</month>
+        <year>2025</year>
     </OrderPlaced>
     <OrderDelivered>
-        <day>12</day>
-        <month>7</month>
-        <year>2018</year>
+        <day>9</day>
+        <month>5</month>
+        <year>2025</year>
     </OrderDelivered>
-    <OrderStatus>Pending</OrderStatus>
+    <OrderStatus>Delivered</OrderStatus>
     <Payment>
-        <PaymentID>5</PaymentID>
-        <PaymentMethod>Credit Card</PaymentMethod>
-        <Amount>234475</Amount>
-        <PaymentDate>
-            <day>28</day>
-            <month>1</month>
-            <year>2018</year>
+        <PaymentID>6</PaymentID>
+        <PaymentMethod>Net Banking</PaymentMethod>
+        <Amount>25000</Amount> <PaymentDate>
+            <day>5</day>
+            <month>5</month>
+            <year>2025</year>
         </PaymentDate>
     </Payment>
 </PurchaseOrder>

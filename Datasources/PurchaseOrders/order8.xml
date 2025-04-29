@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<PurchaseOrder>
+    <OrderID>8</OrderID>
+    <CustomerID>208</CustomerID>
+    <SellerID>4</SellerID>
+    <OrderItems>
+        <OrderItem>
+            <ProductID>3</ProductID>
+            <Quantity>1</Quantity>
+        </OrderItem>
+        <OrderItem>
+            <ProductID>7</ProductID>
+            <Quantity>3</Quantity>
+        </OrderItem>
+        <OrderItem>
+            <ProductID>11</ProductID>
+            <Quantity>2</Quantity>
+        </OrderItem>
+    </OrderItems>
+    <OrderPlaced>
+        <day>25</day>
+        <month>5</month>
+        <year>2025</year>
+    </OrderPlaced>
+    <OrderDelivered>
+        <day>1</day>
+        <month>6</month>
+        <year>2025</year>
+    </OrderDelivered>
+    <OrderStatus>Processed</OrderStatus>
+    <Payment>
+        <PaymentID>8</PaymentID>
+        <PaymentMethod>PayPal</PaymentMethod>
+        <Amount>28000</Amount> <PaymentDate>
+            <day>28</day>
+            <month>5</month>
+            <year>2025</year>
+        </PaymentDate>
+    </Payment>
+</PurchaseOrder>

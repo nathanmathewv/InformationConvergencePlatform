@@ -1,14 +1,14 @@
 {
     "Select" : [
         {
-            "DSName": "employee",
-            "Fields": ["ssn","fname", "lname","dno"],
+            "DSName": "customer",
+            "Fields": ["customerId","fname", "lname","rno"],
             "display": ["fname","lname"]
         },
         {
-            "DSName": "department",
-            "Fields": ["dnumber", "dname"],
-            "display": ["dname"]
+            "DSName": "region",
+            "Fields": ["rnumber", "rname"],
+            "display": ["rname"]
         },
         {
             "DSName": "PurchaseOrders",
@@ -26,18 +26,18 @@
         {
             "Literals":[
             {
-                "Value1": "employee.ssn",
+                "Value1": "customer.customerId",
                 "Value2": "PurchaseOrders.PurchaseOrder/CustomerID",
                 "Operator": "="
             },
             {
-                "Value1": "employee.fname",
-                "Value2": "Constant::John",
+                "Value1": "customer.fname",
+                "Value2": "Constant::Bob",
                 "Operator": "="
             },
             {
-                "Value1": "employee.dno",
-                "Value2": "department.dnumber",
+                "Value1": "customer.rno",
+                "Value2": "region.rnumber",
                 "Operator": "="
             }
             ]
@@ -45,18 +45,18 @@
         {
             "Literals":[
             {
-                "Value1": "employee.ssn",
+                "Value1": "customer.customerId",
                 "Value2": "PurchaseOrders.PurchaseOrder/CustomerID",
                 "Operator": "="
             },
             {
                 "Value1": "PurchaseOrders.PurchaseOrder/CustomerID",
-                "Value2": "Constant::222222200",
+                "Value2": "Constant::208",
                 "Operator": "="
             },
             {
-                "Value1": "employee.dno",
-                "Value2": "department.dnumber",
+                "Value1": "customer.rno",
+                "Value2": "region.rnumber",
                 "Operator": "="
             }
             ]

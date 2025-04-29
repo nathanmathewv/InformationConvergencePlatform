@@ -1,3 +1,30 @@
 [
-
+    {
+        "customer.fname":"Bob",
+        "customer.lname":"Wilson",
+        "region.rname":"West",
+        "PurchaseOrders.PurchaseOrder\/OrderID":[
+            "6"
+        ],
+        "PurchaseOrders.PurchaseOrder\/CustomerID":[
+            "206"
+        ],
+        "PurchaseOrders.PurchaseOrder\/OrderPlaced\/month":[
+            "5"
+        ]
+    },
+    {
+        "customer.fname":"Mona",
+        "customer.lname":"Jones",
+        "region.rname":"North",
+        "PurchaseOrders.PurchaseOrder\/OrderID":[
+            "8"
+        ],
+        "PurchaseOrders.PurchaseOrder\/CustomerID":[
+            "208"
+        ],
+        "PurchaseOrders.PurchaseOrder\/OrderPlaced\/month":[
+            "5"
+        ]
+    }
 ]

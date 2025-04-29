@@ -5,31 +5,31 @@
     
     <entity_type type = "SQL">
         <id>1</id>
-        <name>employee</name>
+        <name>customer</name>
         <ds>
             <dbconfig>
-                <database>companydb</database>
+                <database>DmProject</database>
                 <host>localhost</host>
                 <port>3306</port>
                 <user>root</user>
                 <password>Test@123</password>
             </dbconfig>
-            <table>employee</table>
+            <table>customer</table>
         </ds>
     </entity_type>
 
     <entity_type type = "SQL">
         <id>5</id>
-        <name>department</name>
+        <name>region</name>
         <ds>
             <dbconfig>
-                <database>companydb</database>
+                <database>DmProject</database>
                 <host>localhost</host>
                 <port>3306</port>
                 <user>root</user>
                 <password>Test@123</password>
             </dbconfig>
-            <table>department</table>
+            <table>region</table>
         </ds>
     </entity_type>
 
@@ -47,6 +47,14 @@
         <name>PurchaseOrders</name>
         <ds>
             <FolderName>PurchaseOrders</FolderName>
+        </ds> 
+    </entity_type>
+
+    <entity_type type = "XML">
+        <id>7</id>
+        <name>Products</name>
+        <ds>
+            <FolderName>Products</FolderName>
         </ds> 
     </entity_type>
 

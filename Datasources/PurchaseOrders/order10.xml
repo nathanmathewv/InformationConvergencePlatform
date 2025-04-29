@@ -1,39 +1,43 @@
 <?xml version="1.0" ?>
 <PurchaseOrder>
-    <OrderID>7</OrderID>
-    <CustomerID>207</CustomerID>
-    <SellerID>9</SellerID>
+    <OrderID>10</OrderID>
+    <CustomerID>210</CustomerID>
+    <SellerID>8</SellerID>
     <OrderItems>
         <OrderItem>
-            <ProductID>1</ProductID>
+            <ProductID>2</ProductID>
             <Quantity>2</Quantity>
         </OrderItem>
         <OrderItem>
-            <ProductID>5</ProductID>
+            <ProductID>4</ProductID>
+            <Quantity>3</Quantity>
+        </OrderItem>
+        <OrderItem>
+            <ProductID>6</ProductID>
             <Quantity>1</Quantity>
         </OrderItem>
         <OrderItem>
-            <ProductID>15</ProductID>
+            <ProductID>10</ProductID>
             <Quantity>1</Quantity>
         </OrderItem>
     </OrderItems>
     <OrderPlaced>
-        <day>12</day>
-        <month>5</month>
+        <day>20</day>
+        <month>6</month>
         <year>2025</year>
     </OrderPlaced>
     <OrderDelivered>
-        <day>20</day>
-        <month>5</month>
+        <day>28</day>
+        <month>6</month>
         <year>2025</year>
     </OrderDelivered>
-    <OrderStatus>Processing</OrderStatus>
+    <OrderStatus>Delivered</OrderStatus>
     <Payment>
-        <PaymentID>7</PaymentID>
+        <PaymentID>10</PaymentID>
         <PaymentMethod>Credit Card</PaymentMethod>
-        <Amount>37000</Amount> <PaymentDate>
-            <day>17</day>
-            <month>5</month>
+        <Amount>56000</Amount> <PaymentDate>
+            <day>23</day>
+            <month>6</month>
             <year>2025</year>
         </PaymentDate>
     </Payment>

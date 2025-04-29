@@ -1,41 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" ?>
 <PurchaseOrder>
     <OrderID>2</OrderID>
-    <CustomerID>222222200</CustomerID>
-    <SellerID>4</SellerID>
-    <Products>
-        <Product>
-            <ProductID>3</ProductID>
-            <ProductName>Laptop</ProductName>
+    <CustomerID>202</CustomerID>
+    <SellerID>5</SellerID>
+    <OrderItems>
+        <OrderItem>
+            <ProductID>2</ProductID>
             <Quantity>1</Quantity>
-            <Price>30000</Price>
-        </Product>
-        <Product>
+        </OrderItem>
+        <OrderItem>
             <ProductID>4</ProductID>
-            <ProductName>Monitor</ProductName>
-            <Quantity>2</Quantity>
-            <Price>8000</Price>
-        </Product>
-    </Products>
+            <Quantity>4</Quantity>
+        </OrderItem>
+    </OrderItems>
     <OrderPlaced>
-        <day>12</day>
-        <month>5</month>
-        <year>2018</year>
+        <day>28</day>
+        <month>2</month>
+        <year>2025</year>
     </OrderPlaced>
     <OrderDelivered>
-        <day>18</day>
-        <month>5</month>
-        <year>2018</year>
+        <day>7</day>
+        <month>3</month>
+        <year>2025</year>
     </OrderDelivered>
-    <OrderStatus>Processed</OrderStatus>
+    <OrderStatus>Delivered</OrderStatus>
     <Payment>
         <PaymentID>2</PaymentID>
-        <PaymentMethod>Debit Card</PaymentMethod>
-        <Amount>46000</Amount>
-        <PaymentDate>
-            <day>18</day>
-            <month>5</month>
-            <year>2018</year>
+        <PaymentMethod>PayPal</PaymentMethod>
+        <Amount>30000</Amount> <PaymentDate>
+            <day>3</day>
+            <month>3</month>
+            <year>2025</year>
         </PaymentDate>
     </Payment>
 </PurchaseOrder>
