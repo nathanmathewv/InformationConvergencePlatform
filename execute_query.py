@@ -26,7 +26,7 @@ data_dict = {entity.find("ns:name", namespace).text: entity.attrib["type"] for e
 
 # Initialize SQL DB configurations
 sql_ds_names, sql_db_configs = initialize_sql(root, namespace,jsonquery,data_dict)
-xml_ds_names, xml_files, xml_roots = initialize_xml(root, jsonquery, data_dict, datasource)
+xml_ds_names, xml_files, xml_roots = initialize_xml(root, jsonquery, data_dict, datasource, namespace)
 
 spreadsheet_ds_names = get_spreadsheet_ds_names(jsonquery, data_dict)
 spreadsheet_files = configure_spreadsheet_ds(root, namespace)

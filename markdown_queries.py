@@ -7,18 +7,8 @@ from lxml import etree
 import xmltodict
 import json
 
-# def initialize_xml(root, jsonquery,data_dict,datasource):
-#     xml_ds_names = [entry["DSName"] for entry in jsonquery["Select"] if data_dict.get(entry["DSName"]) == "XML"]
-#     xml_files = defaultdict(list)
-#     for data in xml_ds_names:
-#         folder = os.path.join(datasource, data)
-#         xml_files[data] = glob.glob(os.path.join(folder, "*.xml"))
-#     return xml_ds_names, xml_files
-
-def initialize_xml(root, jsonquery, data_dict, datasource):
-    # Step 1: Build xml_root_dict from the schema DOM
+def initialize_xml(root, jsonquery, data_dict, datasource, namespace):
     xml_root_dict = {}
-    namespace = {'ns': root.tag.split('}')[0].strip('{')} 
 
     for entity in root.findall('ns:entity_type', namespace):
         if entity.get('type') == 'XML':
