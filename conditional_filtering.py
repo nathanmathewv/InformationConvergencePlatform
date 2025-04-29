@@ -86,16 +86,29 @@ def resolve_queries(jsonquery, dbs):
                     v2 = v2[10:]
                 else:
                     v2 = row[1][v2]
+                
+                flag1 = 0
                 if(isinstance(v1,list)):
                     # print("HELLOOOO")
-                    v1 = v1[0]
+                    if(len(v1) > 1):
+                        flag1 = 1
+                    else:
+                        v1 = v1[0]
+                flag2 = 0
                 if(isinstance(v2,list)):
-                    # print("HELLOOOO1")
-                    v2 = v2[0]
-                # print(v1,v2,"HELLO")
+                    if(len(v2) > 1):
+                        flag2 = 1
+                    else:
+                        v2 = v2[0]
                 
                 v1 = str(v1)
                 v2 = str(v2)
+                if(literal["Operator"] in ["<", ">", "<=", ">=", "=", "!="]):
+                    if(flag1  == 1 or flag2 == 1):
+                        raise Exception(f"Invalid operator {literal["Operator"]} between {v1} and {v2}")
+                if(literal["Operator"] in "IN"):
+                    if(flag1 == 1):
+                        raise Exception(f"Invalid operator {literal["Operator"]} between {v1} and {v2}")
                 if(literal["Operator"] == "="):
                     if(v1 != v2):
                         valid_in = False
@@ -113,6 +126,9 @@ def resolve_queries(jsonquery, dbs):
                         valid_in = False
                 elif(literal["Operator"] == "!="):
                     if(v1 == v2):
+                        valid_in = False
+                elif(literal["Operator"] == "IN"):
+                    if(v1 not in v2):
                         valid_in = False
                 else:
                     print("Invalid operator")
