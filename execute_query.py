@@ -14,7 +14,7 @@ schema_xml_file = "Schemas/sample_schema_nathan.xml"
 tree = etree.parse(schema_xml_file)
 root = tree.getroot()
 
-with open('Queries/query.json', 'r') as file:
+with open('Queries/query3.json', 'r') as file:
     jsonquery = json.load(file)
 
 # Define the namespace

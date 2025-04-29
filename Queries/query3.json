@@ -5,16 +5,25 @@
       "Fields": [
         "PurchaseOrder/OrderID",
         "PurchaseOrder/CustomerID",
-        "PurchaseOrder/OrderPlaced/month",
-        "PurchaseOrder/Products/Product/Price",
-        "PurchaseOrder/Products/Product"
+        "PurchaseOrder/OrderPlaced/month"
       ],
       "display": [
         "PurchaseOrder/OrderID",
         "PurchaseOrder/CustomerID",
-        "PurchaseOrder/OrderPlaced/month",
-        "PurchaseOrder/Products/Product/Price",
-        "PurchaseOrder/Products/Product"
+        "PurchaseOrder/OrderPlaced/month"
+      ]
+    },
+    {
+      "DSName": "Products",
+      "Fields": [
+        "Product/ProductID",
+        "Product/Price",
+        "Product"
+      ],
+      "display": [
+        "Product/ProductID",
+        "Product/Price",
+        "Product"
       ]
     }
   ],
@@ -22,9 +31,9 @@
     {
       "Literals": [
         {
-          "Value1": "PurchaseOrders.PurchaseOrder/Products/Product/Price",
-          "Value2": "Constant::40000",
-          "Operator": ">="
+          "Value1": "PurchaseOrders.PurchaceOrder/OrderItems/OrderItem/ProductID",
+          "Value2": "Products.Product/ProductID",
+          "Operator": "="
         }
       ]
     }

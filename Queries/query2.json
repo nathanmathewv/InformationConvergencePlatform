@@ -1,27 +1,27 @@
 {
     "Select" : [
         {
-            "DSName": "employee",
-            "Fields": ["ssn","fname", "lname","dno", "salary"],
+            "DSName": "customer",
+            "Fields": ["customerId","fname", "lname", "rno", "age"],
             "display": ["fname","lname"]
         },
         {
-            "DSName": "department",
-            "Fields": ["dnumber", "dname"],
-            "display": ["dname"]
+            "DSName": "region",
+            "Fields": ["rnumber", "rname"],
+            "display": ["rname"]
         }
     ],
     "Where":[
         {
             "Literals":[
             {
-                "Value1": "employee.salary",
-                "Value2": "Constant::33000",
+                "Value1": "customer.age",
+                "Value2": "Constant::35",
                 "Operator": "<="
             },
             {
-                "Value1": "employee.dno",
-                "Value2": "department.dnumber",
+                "Value1": "customer.rno",
+                "Value2": "region.rnumber",
                 "Operator": "="
             }
             ]

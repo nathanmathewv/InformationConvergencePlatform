@@ -1,0 +1,27 @@
+{
+    "Select": [
+      {
+        "DSName": "Products",
+        "Fields": [
+          "Product/ProductID",
+          "Product/Price"
+        ],
+        "display": [
+          "Product/ProductID",
+          "Product/Price"
+        ]
+      }
+    ],
+    "Where": [
+      {
+        "Literals": [
+          {
+            "Value1": "Products.Product/Price",
+            "Value2": "Constant::60000",
+            "Operator": ">="
+          }
+        ]
+      }
+    ]
+  }
+  
