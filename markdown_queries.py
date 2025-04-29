@@ -53,6 +53,15 @@ def generate_xquery_string(conditions, fields, ds_name, root_name):
         for f in fields
     ])
 
+    return_fields =[]
+    for f in fields:
+        if f == root_name:
+            return_fields.append(f"<{f.replace('/', '_')}>{{ $p }}</{f.replace('/', '_')}>")
+        else:
+            return_fields.append(f"<{f.replace('/', '_')}>{{ $p/{f.replace(f'{root_name}/', '')} }}</{f.replace('/', '_')}>")
+        
+    return_fields = "\n".join(return_fields)
+
     xquery = f"""
     for $p in /{root_name}
     where {where_expr}
@@ -97,8 +106,8 @@ def run_xml_query(conditions, xml_files, ds_name, root_name, fields):
                         for cn in container_nodes:
                             elem_dict = xmltodict.parse(etree.tostring(cn))
                             elem_root = list(elem_dict.values())[0]
-                            print(f"elem_root: {elem_root}")
-
+                            print(elem_root)
+                            # print(f"elem_root: {elem_root}")
                             child_entries = []
                             for k, v in elem_root.items():
                                 if isinstance(v,str):
@@ -114,11 +123,11 @@ def run_xml_query(conditions, xml_files, ds_name, root_name, fields):
                                             child_entries.append(v)
                                             break
                             values.extend(child_entries)
-                        print(f"values: {values}")
+                        # print(f"values: {values}")
                         row[display_column] = values
                     records.append(row)
 
             except Exception as e:
                 print(f"Error processing {xml_file}: {e}")
-
+    print(records)
     return pd.DataFrame(records)

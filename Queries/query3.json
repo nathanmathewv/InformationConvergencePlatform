@@ -5,7 +5,8 @@
       "Fields": [
         "PurchaseOrder/OrderID",
         "PurchaseOrder/CustomerID",
-        "PurchaseOrder/OrderPlaced/month"
+        "PurchaseOrder/OrderPlaced/month",
+        "PurchaseOrder/OrderItems/OrderItem/ProductID"
       ],
       "display": [
         "PurchaseOrder/OrderID",
@@ -31,9 +32,9 @@
     {
       "Literals": [
         {
-          "Value1": "PurchaseOrders.PurchaceOrder/OrderItems/OrderItem/ProductID",
-          "Value2": "Products.Product/ProductID",
-          "Operator": "="
+          "Value1": "Products.Product/ProductID",
+          "Value2": "PurchaseOrders.PurchaseOrder/OrderItems/OrderItem/ProductID",
+          "Operator": "IN"
         }
       ]
     }

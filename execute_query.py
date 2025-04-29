@@ -41,7 +41,7 @@ merged_df = []
 for entry in specific_query.items():
     ds_name = entry[0]
     conditions = entry[1]
-
+    print(ds_name, conditions)
     if ds_name in sql_ds_names and ds_name in sql_db_configs:
         df = run_sql_query(conditions, sql_db_configs[ds_name], ds_name, specific_fields[ds_name])
     elif ds_name in xml_ds_names:

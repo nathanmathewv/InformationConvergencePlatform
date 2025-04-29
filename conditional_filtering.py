@@ -105,10 +105,10 @@ def resolve_queries(jsonquery, dbs):
                 v2 = str(v2)
                 if(literal["Operator"] in ["<", ">", "<=", ">=", "=", "!="]):
                     if(flag1  == 1 or flag2 == 1):
-                        raise Exception(f"Invalid operator {literal["Operator"]} between {v1} and {v2}")
+                        raise Exception(f'Invalid operator {literal["Operator"]} between {v1} and {v2}')
                 if(literal["Operator"] in "IN"):
                     if(flag1 == 1):
-                        raise Exception(f"Invalid operator {literal["Operator"]} between {v1} and {v2}")
+                        raise Exception(f'Invalid operator {literal["Operator"]} between {v1} and {v2}')
                 if(literal["Operator"] == "="):
                     if(v1 != v2):
                         valid_in = False
