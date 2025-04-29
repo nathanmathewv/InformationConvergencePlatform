@@ -93,16 +93,18 @@ def resolve_queries(jsonquery, dbs):
                     if(len(v1) > 1):
                         flag1 = 1
                     else:
-                        v1 = v1[0]
+                        v1 = str(v1[0])
+                else:
+                    v1 = str(v1)
                 flag2 = 0
                 if(isinstance(v2,list)):
                     if(len(v2) > 1):
                         flag2 = 1
                     else:
                         v2 = v2[0]
-                
-                v1 = str(v1)
-                v2 = str(v2)
+                        v2 = str(v2)
+                else:
+                    v2 = str(v2)
                 if(literal["Operator"] in ["<", ">", "<=", ">=", "=", "!="]):
                     if(flag1  == 1 or flag2 == 1):
                         raise Exception(f'Invalid operator {literal["Operator"]} between {v1} and {v2}')
