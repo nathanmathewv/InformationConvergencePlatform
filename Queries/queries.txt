@@ -1,0 +1,7 @@
+query7.json - Customers who ordered in April from a specific region
+query8.json - All orders made by a customer named Mona
+query9.json - Display customers who belong to region with rname 'North' and have at least one purchase
+query10.json - All orders made by customer with ID 207
+query11.json - List seller names with rating above 4.0
+query12.json - Orders with seller names and any product priced above 35000
+query13.json - Orders in March containing any product named 'Printer'

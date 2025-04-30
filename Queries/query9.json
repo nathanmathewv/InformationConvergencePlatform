@@ -1,0 +1,41 @@
+{
+    "Select": [
+      {
+        "DSName": "customer",
+        "Fields": ["customerId", "fname", "lname", "rno"],
+        "display": ["fname", "lname"]
+      },
+      {
+        "DSName": "region",
+        "Fields": ["rnumber", "rname"],
+        "display": ["rname"]
+      },
+      {
+        "DSName": "PurchaseOrders",
+        "Fields": ["PurchaseOrder/OrderID", "PurchaseOrder/CustomerID"],
+        "display": ["PurchaseOrder/OrderID"]
+      }
+    ],
+    "Where": [
+      {
+        "Literals": [
+          {
+            "Value1": "customer.rno",
+            "Value2": "region.rnumber",
+            "Operator": "="
+          },
+          {
+            "Value1": "region.rname",
+            "Value2": "Constant::North",
+            "Operator": "="
+          },
+          {
+            "Value1": "customer.customerId",
+            "Value2": "PurchaseOrders.PurchaseOrder/CustomerID",
+            "Operator": "="
+          }
+        ]
+      }
+    ]
+  }
+  

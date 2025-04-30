@@ -1,0 +1,31 @@
+{
+    "Select": [
+      {
+        "DSName": "customer",
+        "Fields": ["customerId", "fname", "lname"],
+        "display": ["fname", "lname"]
+      },
+      {
+        "DSName": "PurchaseOrders",
+        "Fields": ["PurchaseOrder/OrderID", "PurchaseOrder/OrderPlaced/month", "PurchaseOrder/CustomerID"],
+        "display": ["PurchaseOrder/OrderID", "PurchaseOrder/OrderPlaced/month"]
+      }
+    ],
+    "Where": [
+      {
+        "Literals": [
+          {
+            "Value1": "customer.customerId",
+            "Value2": "Constant::207",
+            "Operator": "="
+          },
+          {
+            "Value1": "customer.customerId",
+            "Value2": "PurchaseOrders.PurchaseOrder/CustomerID",
+            "Operator": "="
+          }
+        ]
+      }
+    ]
+  }
+  

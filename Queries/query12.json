@@ -1,0 +1,48 @@
+{
+    "Select": [
+      {
+        "DSName": "PurchaseOrders",
+        "Fields": [
+          "PurchaseOrder/OrderID",
+          "PurchaseOrder/SellerID",
+          "PurchaseOrder/OrderItems/OrderItem/ProductID"
+        ],
+        "display": [
+          "PurchaseOrder/OrderID",
+          "PurchaseOrder/SellerID"
+        ]
+      },
+      {
+        "DSName": "Sellers",
+        "Fields": ["SellerID", "SellerName"],
+        "display": ["SellerName"]
+      },
+      {
+        "DSName": "Products",
+        "Fields": ["Product/ProductID", "Product/Price"],
+        "display": ["Product/Price"]
+      }
+    ],
+    "Where": [
+      {
+        "Literals": [
+          {
+            "Value1": "Products.Product/ProductID",
+            "Value2": "PurchaseOrders.PurchaseOrder/OrderItems/OrderItem/ProductID",
+            "Operator": "IN"
+          },
+          {
+            "Value1": "Products.Product/Price",
+            "Value2": "Constant::35000",
+            "Operator": ">"
+          },
+          {
+            "Value1": "PurchaseOrders.PurchaseOrder/SellerID",
+            "Value2": "Sellers.SellerID",
+            "Operator": "="
+          }
+        ]
+      }
+    ]
+  }
+  

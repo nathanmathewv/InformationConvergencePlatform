@@ -1,0 +1,21 @@
+{
+    "Select": [
+      {
+        "DSName": "Sellers",
+        "Fields": ["SellerID", "SellerName", "Rating"],
+        "display": ["SellerName", "Rating"]
+      }
+    ],
+    "Where": [
+      {
+        "Literals": [
+          {
+            "Value1": "Sellers.Rating",
+            "Value2": "Constant::4.0",
+            "Operator": ">"
+          }
+        ]
+      }
+    ]
+  }
+  
