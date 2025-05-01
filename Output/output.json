@@ -20,10 +20,7 @@
                 "ProductID":"1",
                 "ProductName":"Laptop",
                 "Price":"95000"
-            },
-            "1",
-            "Laptop",
-            "95000"
+            }
         ]
     },
     {
@@ -47,10 +44,7 @@
                 "ProductID":"3",
                 "ProductName":"Tablet",
                 "Price":"35000"
-            },
-            "3",
-            "Tablet",
-            "35000"
+            }
         ]
     },
     {
@@ -74,10 +68,7 @@
                 "ProductID":"6",
                 "ProductName":"Headphones",
                 "Price":"8000"
-            },
-            "6",
-            "Headphones",
-            "8000"
+            }
         ]
     },
     {
@@ -101,10 +92,7 @@
                 "ProductID":"10",
                 "ProductName":"Smartwatch",
                 "Price":"18000"
-            },
-            "10",
-            "Smartwatch",
-            "18000"
+            }
         ]
     },
     {
@@ -128,10 +116,7 @@
                 "ProductID":"2",
                 "ProductName":"Smartphone",
                 "Price":"62000"
-            },
-            "2",
-            "Smartphone",
-            "62000"
+            }
         ]
     },
     {
@@ -155,10 +140,7 @@
                 "ProductID":"4",
                 "ProductName":"Wireless Mouse",
                 "Price":"2500"
-            },
-            "4",
-            "Wireless Mouse",
-            "2500"
+            }
         ]
     },
     {
@@ -182,10 +164,7 @@
                 "ProductID":"6",
                 "ProductName":"Headphones",
                 "Price":"8000"
-            },
-            "6",
-            "Headphones",
-            "8000"
+            }
         ]
     },
     {
@@ -209,10 +188,7 @@
                 "ProductID":"2",
                 "ProductName":"Smartphone",
                 "Price":"62000"
-            },
-            "2",
-            "Smartphone",
-            "62000"
+            }
         ]
     },
     {
@@ -236,10 +212,7 @@
                 "ProductID":"4",
                 "ProductName":"Wireless Mouse",
                 "Price":"2500"
-            },
-            "4",
-            "Wireless Mouse",
-            "2500"
+            }
         ]
     },
     {
@@ -263,10 +236,7 @@
                 "ProductID":"15",
                 "ProductName":"VR Headset",
                 "Price":"38000"
-            },
-            "15",
-            "VR Headset",
-            "38000"
+            }
         ]
     },
     {
@@ -290,10 +260,7 @@
                 "ProductID":"7",
                 "ProductName":"External Hard Drive",
                 "Price":"7000"
-            },
-            "7",
-            "External Hard Drive",
-            "7000"
+            }
         ]
     },
     {
@@ -317,10 +284,7 @@
                 "ProductID":"9",
                 "ProductName":"Printer",
                 "Price":"12000"
-            },
-            "9",
-            "Printer",
-            "12000"
+            }
         ]
     },
     {
@@ -344,10 +308,7 @@
                 "ProductID":"12",
                 "ProductName":"Gaming Console",
                 "Price":"45000"
-            },
-            "12",
-            "Gaming Console",
-            "45000"
+            }
         ]
     },
     {
@@ -371,10 +332,7 @@
                 "ProductID":"14",
                 "ProductName":"Drawing Tablet",
                 "Price":"22000"
-            },
-            "14",
-            "Drawing Tablet",
-            "22000"
+            }
         ]
     },
     {
@@ -398,10 +356,7 @@
                 "ProductID":"10",
                 "ProductName":"Smartwatch",
                 "Price":"18000"
-            },
-            "10",
-            "Smartwatch",
-            "18000"
+            }
         ]
     },
     {
@@ -425,10 +380,7 @@
                 "ProductID":"13",
                 "ProductName":"Bluetooth Speaker",
                 "Price":"6000"
-            },
-            "13",
-            "Bluetooth Speaker",
-            "6000"
+            }
         ]
     },
     {
@@ -452,10 +404,7 @@
                 "ProductID":"1",
                 "ProductName":"Laptop",
                 "Price":"95000"
-            },
-            "1",
-            "Laptop",
-            "95000"
+            }
         ]
     },
     {
@@ -479,10 +428,7 @@
                 "ProductID":"15",
                 "ProductName":"VR Headset",
                 "Price":"38000"
-            },
-            "15",
-            "VR Headset",
-            "38000"
+            }
         ]
     },
     {
@@ -506,10 +452,7 @@
                 "ProductID":"5",
                 "ProductName":"Keyboard",
                 "Price":"3000"
-            },
-            "5",
-            "Keyboard",
-            "3000"
+            }
         ]
     },
     {
@@ -533,10 +476,7 @@
                 "ProductID":"11",
                 "ProductName":"Monitor",
                 "Price":"25000"
-            },
-            "11",
-            "Monitor",
-            "25000"
+            }
         ]
     },
     {
@@ -560,10 +500,7 @@
                 "ProductID":"3",
                 "ProductName":"Tablet",
                 "Price":"35000"
-            },
-            "3",
-            "Tablet",
-            "35000"
+            }
         ]
     },
     {
@@ -587,10 +524,7 @@
                 "ProductID":"7",
                 "ProductName":"External Hard Drive",
                 "Price":"7000"
-            },
-            "7",
-            "External Hard Drive",
-            "7000"
+            }
         ]
     },
     {
@@ -614,10 +548,7 @@
                 "ProductID":"12",
                 "ProductName":"Gaming Console",
                 "Price":"45000"
-            },
-            "12",
-            "Gaming Console",
-            "45000"
+            }
         ]
     },
     {
@@ -641,10 +572,7 @@
                 "ProductID":"14",
                 "ProductName":"Drawing Tablet",
                 "Price":"22000"
-            },
-            "14",
-            "Drawing Tablet",
-            "22000"
+            }
         ]
     },
     {
@@ -668,10 +596,7 @@
                 "ProductID":"9",
                 "ProductName":"Printer",
                 "Price":"12000"
-            },
-            "9",
-            "Printer",
-            "12000"
+            }
         ]
     }
 ]

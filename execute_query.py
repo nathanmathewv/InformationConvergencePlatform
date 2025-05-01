@@ -53,6 +53,6 @@ def run(data, upload_folder):
 
     merged_df.to_csv(os.path.join(OUTPUT_DIR,'output.csv'), index=False)
     merged_df.to_json(os.path.join(OUTPUT_DIR,'output.json'), orient="records", indent=4)
-    print([merged_df.to_html(classes='data')])
+    # print([merged_df.to_html(classes='data')])
 
     return render_template("result.html", tables=[merged_df.to_html(classes='data')][-1], titles=merged_df.columns.values)

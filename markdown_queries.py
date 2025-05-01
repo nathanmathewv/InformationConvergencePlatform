@@ -58,7 +58,7 @@ def generate_xquery_string(conditions, fields, ds_name, root_name):
     return_fields =[]
     for f in fields:
         if f == root_name:
-            return_fields.append(f"<{f.replace('/', '_')}>{{ $p }}</{f.replace('/', '_')}>")
+            return_fields.append("{ $p }")
         else:
             return_fields.append(f"<{f.replace('/', '_')}>{{ $p/{f.replace(f'{root_name}/', '')} }}</{f.replace('/', '_')}>")
         
@@ -106,9 +106,16 @@ def run_xml_query(conditions, xml_files, ds_name, root_name, fields):
                             continue
 
                         values = []
+                        # print(container_nodes)
                         for cn in container_nodes:
+                            # print(f"cn: {etree.tostring(cn)}")
                             elem_dict = xmltodict.parse(etree.tostring(cn))
+                            if(field == root_name):
+                                elem_dict = {root_name: elem_dict}
                             elem_root = list(elem_dict.values())[0]
+                            # print(f"elem_dict: {elem_dict}")
+                            
+                                
                             # print(elem_root)
                             child_entries = []
                             if(elem_root is None):

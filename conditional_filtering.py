@@ -70,6 +70,7 @@ def resolve_queries(jsonquery, dbs):
                     # print("HELLOOOO")
                     if(len(v1) > 1):
                         flag1 = 1
+                        v1 = [str(i) for i in v1]
                     else:
                         v1 = str(v1[0])
                 else:
@@ -78,6 +79,7 @@ def resolve_queries(jsonquery, dbs):
                 if(isinstance(v2,list)):
                     if(len(v2) > 1):
                         flag2 = 1
+                        v2 = [str(i) for i in v2]
                     else:
                         v2 = v2[0]
                         v2 = str(v2)
