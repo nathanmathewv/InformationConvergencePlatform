@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unified_schema xmlns="http://iiitb.ac.in/team_5"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://iiitb.ac.in/team_5 univ_schema.xsd">
+    
+    <entity_type type = "SQL">
+        <id>1</id>
+        <name>customer</name>
+        <ds>
+            <dbconfig>
+                <database>DmProject</database>
+                <host>localhost</host>
+                <port>3306</port>
+                <user>testuser</user>
+                <password>newpassword</password>
+            </dbconfig>
+            <table>customer</table>
+        </ds>
+    </entity_type>
+
+    <entity_type type = "SQL">
+        <id>5</id>
+        <name>region</name>
+        <ds>
+            <dbconfig>
+                <database>DmProject</database>
+                <host>localhost</host>
+                <port>3306</port>
+                <user>testuser</user>
+                <password>newpassword</password>
+            </dbconfig>
+            <table>region</table>
+        </ds>
+    </entity_type>
+
+    <entity_type type = "Spreadsheet">
+        <id>2</id>
+        <name>Sellers</name>
+        <ds>
+            <file>Sellers.xlsx</file>
+            <sheet>Sellers</sheet>
+        </ds>
+    </entity_type>
+
+    <entity_type type = "XML">
+        <id>3</id>
+        <name>PurchaseOrders</name>
+        <ds>
+            <FolderName>PurchaseOrders</FolderName>
+            <root>PurchaseOrder</root>
+        </ds> 
+    </entity_type>
+
+    <entity_type type = "XML">
+        <id>7</id>
+        <name>Products</name>
+        <ds>
+            <FolderName>Products</FolderName>
+            <root>Product</root>
+        </ds> 
+    </entity_type>
+
+    <entity_type type = "PDF">
+        <id>4</id>
+        <name>Invoice</name>
+        <ds>
+            <FolderName>Invoices</FolderName>
+        </ds>
+    </entity_type>
+
+    <link>
+        <source>
+                <id>1</id>
+                <name>Customer</name>
+                <p_key>CustID</p_key>
+        </source>
+        <target>
+                <id>3</id>
+                <name>Purchase_Orders</name>
+                <f_key>CustID</f_key>
+        </target>
+        
+    </link>
+</unified_schema>
