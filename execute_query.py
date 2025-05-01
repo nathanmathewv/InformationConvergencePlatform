@@ -1,20 +1,20 @@
 import json
 from lxml import etree
 from prettytable import PrettyTable
-from conditional_filtering import get_ds_specific_query, resolve_queries
+from conditional_filtering import resolve_queries
 from relational_queries import initialize_sql, run_sql_query, configure_spreadsheet_ds, get_spreadsheet_ds_names, run_spreadsheet_query
 from markdown_queries import initialize_xml, run_xml_query
-from execution_helper import get_display_fields
+from execution_helper import get_display_fields, get_ds_specific_query, get_all_fields
 import os
 
 datasource = "Datasources"
 
 # Load XML file
-schema_xml_file = "Schemas/sample_schema_brij.xml"
+schema_xml_file = "Schemas/sample_schema_ayush.xml"
 tree = etree.parse(schema_xml_file)
 root = tree.getroot()
 
-with open('Queries/query13.json', 'r') as file:
+with open('Queries/query.json', 'r') as file:
     jsonquery = json.load(file)
 
 # Define the namespace
@@ -31,7 +31,9 @@ xml_ds_names, xml_files, xml_roots = initialize_xml(root, jsonquery, data_dict, 
 spreadsheet_ds_names = get_spreadsheet_ds_names(jsonquery, data_dict)
 spreadsheet_files = configure_spreadsheet_ds(root, namespace)
 
-specific_query, specific_fields = get_ds_specific_query(jsonquery)
+specific_query = get_ds_specific_query(jsonquery)
+specific_fields = get_all_fields(jsonquery)
+print(specific_fields)
 
 # print(specific_query,specific_fields)
 
