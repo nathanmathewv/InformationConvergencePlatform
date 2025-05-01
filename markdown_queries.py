@@ -7,8 +7,9 @@ from lxml import etree
 import xmltodict
 import json
 
-def initialize_xml(root, jsonquery, data_dict, datasource, namespace):
+def initialize_xml(root, jsonquery, data_dict, namespace):
     xml_root_dict = {}
+    xml_location_dict = {}
 
     for entity in root.findall('ns:entity_type', namespace):
         if entity.get('type') == 'XML':
@@ -16,14 +17,15 @@ def initialize_xml(root, jsonquery, data_dict, datasource, namespace):
             ds = entity.find('ns:ds', namespace)
             root_tag = ds.find('ns:root', namespace).text
             xml_root_dict[name] = root_tag
+            location = ds.find('ns:FolderName', namespace).text
+            xml_location_dict[name] = location
     
     xml_ds_names = [entry["DSName"] for entry in jsonquery["Select"] if data_dict.get(entry["DSName"]) == "XML"]
     xml_files = defaultdict(list)
     xml_roots = {}
 
     for data in xml_ds_names:
-        folder = os.path.join(datasource, data)
-        xml_files[data] = glob.glob(os.path.join(folder, "*.xml"))
+        xml_files[data] = glob.glob(os.path.join(xml_location_dict[data], "*.xml"))
         xml_roots[data] = xml_root_dict.get(data)
 
     return xml_ds_names, xml_files, xml_root_dict
@@ -67,7 +69,7 @@ def generate_xquery_string(conditions, fields, ds_name, root_name):
     where {where_expr}
     return <result>{return_fields}</result>
     """
-    print(xquery.strip())
+    print(ds_name,f"query:\n{xquery.strip()}","\n")
     return xquery.strip()
 
 def run_xml_query(conditions, xml_files, ds_name, root_name, fields):
@@ -89,6 +91,7 @@ def run_xml_query(conditions, xml_files, ds_name, root_name, fields):
                 serialized = serialized.replace('<?xml version="1.0" encoding="UTF-8"?>', "")
                 wrapped = f"<root>{serialized}</root>"
                 doc = etree.fromstring(wrapped.encode("utf-8"))
+                error_flag = 0
 
                 for entry_dom in doc.findall("result"):
                     row = {}
@@ -106,9 +109,11 @@ def run_xml_query(conditions, xml_files, ds_name, root_name, fields):
                         for cn in container_nodes:
                             elem_dict = xmltodict.parse(etree.tostring(cn))
                             elem_root = list(elem_dict.values())[0]
-                            print(elem_root)
-                            # print(f"elem_root: {elem_root}")
+                            # print(elem_root)
                             child_entries = []
+                            if(elem_root is None):
+                                error_flag = 1
+                                raise Exception(f"Empty element found in {xml_file} for {field}")
                             for k, v in elem_root.items():
                                 if isinstance(v,str):
                                     child_entries.append(v)
@@ -128,6 +133,8 @@ def run_xml_query(conditions, xml_files, ds_name, root_name, fields):
                     records.append(row)
 
             except Exception as e:
-                print(f"Error processing {xml_file}: {e}")
-    print(records)
+                if(error_flag == 1):
+                    raise e
+                print(f"Warning file {xml_file} not read. Error: {e}")
+    # print(records)
     return pd.DataFrame(records)

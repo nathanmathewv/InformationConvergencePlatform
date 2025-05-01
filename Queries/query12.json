@@ -4,23 +4,16 @@
         "DSName": "PurchaseOrders",
         "Fields": [
           "PurchaseOrder/OrderID",
-          "PurchaseOrder/SellerID",
-          "PurchaseOrder/OrderItems/OrderItem/ProductID"
-        ],
-        "display": [
-          "PurchaseOrder/OrderID",
           "PurchaseOrder/SellerID"
         ]
       },
       {
         "DSName": "Sellers",
-        "Fields": ["SellerID", "SellerName"],
-        "display": ["SellerName"]
+        "Fields": ["SellerName"]
       },
       {
         "DSName": "Products",
-        "Fields": ["Product/ProductID", "Product/Price"],
-        "display": ["Product/Price"]
+        "Fields": ["Product/Price"]
       }
     ],
     "Where": [

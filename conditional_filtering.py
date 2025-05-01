@@ -23,37 +23,15 @@ import random
 # df2 = pd.DataFrame(data_orders)
 # dbs = [df1, df2]
 
-def get_ds_specific_query(jsonquery):
-    #go through "Select" and get the DSName of each entry
-    ds_names = [entry["DSName"] for entry in jsonquery["Select"]]
 
-    fields = dict()
-    for ds in ds_names:
-        fields[ds] = [entry["Fields"] for entry in jsonquery["Select"] if entry["DSName"]==ds]
-        fields[ds] = fields[ds][0]
 
-    where_conditions = jsonquery.get("Where", [])
-    conditions = dict()
-    for ds_name in ds_names:
-        conditions[ds_name] = []
-        for i in where_conditions:
-            temp_literals = []
-            for literal in i.get("Literals", []):
-                v1 = literal["Value1"]
-                v2 = literal["Value2"]
-                v1_cond = (v1[:10] == "Constant::" or v1[:v1.index(".")] == ds_name)
-                v2_cond = (v2[:10] == "Constant::" or v2[:v2.index(".")] == ds_name)
-                if(v1_cond and v2_cond):
-                    temp_literals.append(literal)
-            conditions[ds_name].append({"Literals": temp_literals})
-    return conditions, fields         
-        
+
 
 def resolve_queries(jsonquery, dbs):
     db = dbs[0]
-    print(db,"\n\n\n\n")
+    # print(db,"\n\n\n\n")
     for i in dbs[1:]:
-        print(i,"\n\n\n\n")
+        # print(i,"\n\n\n\n")
         db = db.merge(i, how = "cross")
     
 
@@ -133,8 +111,7 @@ def resolve_queries(jsonquery, dbs):
                     if(v1 not in v2):
                         valid_in = False
                 else:
-                    print("Invalid operator")
-                    valid_in = False
+                    raise Exception(f"Invalid operator {literal['Operator']}")
             if(valid_in == True):
                 valid = True
                 break

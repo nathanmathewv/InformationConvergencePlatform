@@ -5,23 +5,12 @@
       "Fields": [
         "PurchaseOrder/OrderID",
         "PurchaseOrder/CustomerID",
-        "PurchaseOrder/OrderPlaced/month",
-        "PurchaseOrder/OrderItems/OrderItem/ProductID"
-      ],
-      "display": [
-        "PurchaseOrder/OrderID",
-        "PurchaseOrder/CustomerID",
         "PurchaseOrder/OrderPlaced/month"
       ]
     },
     {
       "DSName": "Products",
       "Fields": [
-        "Product/ProductID",
-        "Product/Price",
-        "Product"
-      ],
-      "display": [
         "Product/ProductID",
         "Product/Price",
         "Product"

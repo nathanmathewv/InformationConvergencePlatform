@@ -2,13 +2,11 @@
     "Select" : [
         {
             "DSName": "customer",
-            "Fields": ["customerId","fname", "lname", "rno", "age"],
-            "display": ["fname","lname"]
+            "Fields": ["fname","lname"]
         },
         {
             "DSName": "region",
-            "Fields": ["rnumber", "rname"],
-            "display": ["rname"]
+            "Fields": ["rname"]
         }
     ],
     "Where":[

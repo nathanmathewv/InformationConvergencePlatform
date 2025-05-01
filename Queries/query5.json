@@ -2,8 +2,7 @@
     "Select" : [
         {
             "DSName": "Sellers",
-            "Fields": ["SellerID","Name","Location","Rating"],
-            "display": ["SellerID","Name"]
+            "Fields": ["SellerID","SellerName"]
         }
     ],
     "Where":[

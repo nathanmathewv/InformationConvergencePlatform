@@ -5,10 +5,6 @@
         "Fields": [
           "Product/ProductID",
           "Product/Price"
-        ],
-        "display": [
-          "Product/ProductID",
-          "Product/Price"
         ]
       }
     ],

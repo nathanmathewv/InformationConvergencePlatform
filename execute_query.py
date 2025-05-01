@@ -6,15 +6,12 @@ from relational_queries import initialize_sql, run_sql_query, configure_spreadsh
 from markdown_queries import initialize_xml, run_xml_query
 from execution_helper import get_display_fields, get_ds_specific_query, get_all_fields
 import os
-
-datasource = "Datasources"
-
 # Load XML file
 schema_xml_file = "Schemas/sample_schema_ayush.xml"
 tree = etree.parse(schema_xml_file)
 root = tree.getroot()
 
-with open('Queries/query.json', 'r') as file:
+with open('Queries/query13.json', 'r') as file:
     jsonquery = json.load(file)
 
 # Define the namespace
@@ -26,14 +23,14 @@ data_dict = {entity.find("ns:name", namespace).text: entity.attrib["type"] for e
 
 # Initialize SQL DB configurations
 sql_ds_names, sql_db_configs = initialize_sql(root, namespace,jsonquery,data_dict)
-xml_ds_names, xml_files, xml_roots = initialize_xml(root, jsonquery, data_dict, datasource, namespace)
+xml_ds_names, xml_files, xml_roots = initialize_xml(root, jsonquery, data_dict, namespace)
 
 spreadsheet_ds_names = get_spreadsheet_ds_names(jsonquery, data_dict)
 spreadsheet_files = configure_spreadsheet_ds(root, namespace)
 
 specific_query = get_ds_specific_query(jsonquery)
 specific_fields = get_all_fields(jsonquery)
-print(specific_fields)
+# print(specific_fields)
 
 # print(specific_query,specific_fields)
 
@@ -43,7 +40,7 @@ merged_df = []
 for entry in specific_query.items():
     ds_name = entry[0]
     conditions = entry[1]
-    print(ds_name, conditions)
+    # print(ds_name, conditions)
     if ds_name in sql_ds_names and ds_name in sql_db_configs:
         df = run_sql_query(conditions, sql_db_configs[ds_name], ds_name, specific_fields[ds_name])
     elif ds_name in xml_ds_names:
@@ -62,7 +59,7 @@ merged_df = resolve_queries(jsonquery, merged_df)
 to_display = get_display_fields(jsonquery)
 
 merged_df = merged_df[to_display]
-print(merged_df)
+# print(merged_df)
 
 json_output = merged_df.to_json(orient="records", indent=4)
 

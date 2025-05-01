@@ -37,7 +37,7 @@
         <id>2</id>
         <name>Sellers</name>
         <ds>
-            <file>Sellers.xlsx</file>
+            <file>Datasources/Sellers.xlsx</file>
             <sheet>Sellers</sheet>
         </ds>
     </entity_type>
@@ -46,7 +46,7 @@
         <id>3</id>
         <name>PurchaseOrders</name>
         <ds>
-            <FolderName>PurchaseOrders</FolderName>
+            <FolderName>Datasources/PurchaseOrders</FolderName>
             <root>PurchaseOrder</root>
         </ds> 
     </entity_type>
@@ -55,30 +55,8 @@
         <id>7</id>
         <name>Products</name>
         <ds>
-            <FolderName>Products</FolderName>
+            <FolderName>Datasources/Products</FolderName>
             <root>Product</root>
         </ds> 
     </entity_type>
-
-    <entity_type type = "PDF">
-        <id>4</id>
-        <name>Invoice</name>
-        <ds>
-            <FolderName>Invoices</FolderName>
-        </ds>
-    </entity_type>
-
-    <link>
-        <source>
-                <id>1</id>
-                <name>Customer</name>
-                <p_key>CustID</p_key>
-        </source>
-        <target>
-                <id>3</id>
-                <name>Purchase_Orders</name>
-                <f_key>CustID</f_key>
-        </target>
-        
-    </link>
 </unified_schema>

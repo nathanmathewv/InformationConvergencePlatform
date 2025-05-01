@@ -2,17 +2,11 @@
     "Select": [
       {
         "DSName": "PurchaseOrders",
-        "Fields": [
-          "PurchaseOrder/OrderID",
-          "PurchaseOrder/OrderPlaced/month",
-          "PurchaseOrder/OrderItems/OrderItem/ProductID"
-        ],
-        "display": ["PurchaseOrder/OrderID"]
+        "Fields": ["PurchaseOrder/OrderID"]
       },
       {
         "DSName": "Products",
-        "Fields": ["Product/ProductID", "Product/ProductName"],
-        "display": ["Product/ProductName"]
+        "Fields": ["Product/ProductName"]
       }
     ],
     "Where": [

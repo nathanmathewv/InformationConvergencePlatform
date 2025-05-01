@@ -1,6 +1,8 @@
 import mysql.connector
 import pandas as pd
 import os
+import warnings
+warnings.filterwarnings("ignore", message="pandas only supports SQLAlchemy")
 
 def configure_sql_db(namespace,root):
     sql_db_configs = {}
@@ -57,12 +59,11 @@ def run_sql_query(conditions, sql_db, ds_name, fields):
     if where_conditions_sql:
         query += " WHERE " + " OR ".join(where_conditions_sql)
 
-    print(query)
+    print(f"{ds_name} query:\n{query}","\n")
 
     # Connect using respective DB config
     conn = mysql.connector.connect(**sql_db)
     df = pd.read_sql(query, conn)
-
     #change column names to datasource.columnname
     df.columns = [f"{ds_name}.{col}" for col in df.columns]
 
@@ -84,13 +85,15 @@ def get_spreadsheet_ds_names(jsonquery, data_dict):
     return [entry["DSName"] for entry in jsonquery["Select"] if data_dict.get(entry["DSName"]) == "Spreadsheet"]
 
 def run_spreadsheet_query(ds_name, file_info, fields):
-    file_path = os.path.join("Datasources", file_info["file"])
+    file_path = file_info["file"]
     sheet_name = file_info["sheet"]
 
     df = pd.read_excel(file_path, sheet_name=sheet_name)
 
     # Filter only requested fields if they exist
     filtered_fields = [f for f in fields if f in df.columns]
+    if(filtered_fields != fields):
+        raise Exception(f"Invalid fields {fields} for {ds_name}, available fields are {df.columns.tolist()}")
     df = df[filtered_fields]
 
     # Prefix column names with DSName

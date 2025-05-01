@@ -2,13 +2,11 @@
     "Select": [
       {
         "DSName": "customer",
-        "Fields": ["customerId", "fname", "lname"],
-        "display": ["customerId", "fname", "lname"]
+        "Fields": ["customerId", "fname", "lname"]
       },
       {
         "DSName": "PurchaseOrders",
-        "Fields": ["PurchaseOrder/OrderID", "PurchaseOrder/OrderPlaced/month", "PurchaseOrder/CustomerID"],
-        "display": ["PurchaseOrder/OrderID", "PurchaseOrder/OrderPlaced/month"]
+        "Fields": ["PurchaseOrder/OrderID", "PurchaseOrder/OrderPlaced/month"]
       }
     ],
     "Where": [
