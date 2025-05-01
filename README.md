@@ -69,8 +69,6 @@ InformationConvergencePlatform/
    pip install -r requirements.txt
    ```
 
-   *Note: Ensure that `requirements.txt` contains all necessary Python packages.*
-
 4. **Run the Application**
 
    ```bash
@@ -99,10 +97,6 @@ InformationConvergencePlatform/
 
    - After execution, results will be displayed in a tabular format.
    - Options to download results in JSON, CSV, or TXT formats are available.
-
-## Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
 
 ## License
 
