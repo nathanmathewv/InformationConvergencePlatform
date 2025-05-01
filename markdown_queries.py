@@ -90,6 +90,7 @@ def run_xml_query(conditions, xml_files, ds_name, root_name, fields):
 
                 serialized = serialized.replace('<?xml version="1.0" encoding="UTF-8"?>', "")
                 wrapped = f"<root>{serialized}</root>"
+                # print(f"wrapped: {wrapped}")
                 doc = etree.fromstring(wrapped.encode("utf-8"))
                 error_flag = 0
 

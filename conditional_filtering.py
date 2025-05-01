@@ -89,7 +89,7 @@ def resolve_queries(jsonquery, dbs):
                     if(flag1  == 1 or flag2 == 1):
                         raise Exception(f'Invalid operator {literal["Operator"]} between {v1} and {v2}')
                 if(literal["Operator"] in "IN"):
-                    if(flag1 == 1):
+                    if(flag1 == 1 or flag2 == 0):
                         raise Exception(f'Invalid operator {literal["Operator"]} between {v1} and {v2}')
                 if(literal["Operator"] == "="):
                     if(v1 != v2):
