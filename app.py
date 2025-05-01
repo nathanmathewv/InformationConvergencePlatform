@@ -4,6 +4,7 @@ import json
 import pandas as pd
 from lxml import etree
 from prettytable import PrettyTable
+from werkzeug.utils import secure_filename
 
 from conditional_filtering import resolve_queries
 from relational_queries import initialize_sql, run_sql_query, configure_spreadsheet_ds, get_spreadsheet_ds_names, run_spreadsheet_query
@@ -11,6 +12,10 @@ from markdown_queries import initialize_xml, run_xml_query
 from execution_helper import get_display_fields, get_ds_specific_query, get_all_fields
 
 app = Flask(__name__)
+
+UPLOAD_FOLDER = 'Schemas'
+ALLOWED_EXTENSIONS = {'xml'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/run_query', methods=['POST'])
 def run_query():
@@ -56,6 +61,32 @@ def run_query():
         json_output = merged_df.to_json(orient="records", indent=4)
 
         return json_output, 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/upload_schema', methods=['POST'])
+def upload_schema():
+    try:
+        data = request.get_json()
+
+        xml_content = data.get('xml')
+        file_name = data.get('file_name')
+
+        if not xml_content or not file_name:
+            return jsonify({"error": "Both 'xml' and 'file_name' fields are required."}), 400
+
+        if not file_name.endswith('.xml'):
+            return jsonify({"error": "file_name must end with .xml"}), 400
+
+        filename = secure_filename(file_name)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+        # Write the XML content to the file
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(xml_content)
+
+        return jsonify({"message": "Schema uploaded successfully", "path": filepath}), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
