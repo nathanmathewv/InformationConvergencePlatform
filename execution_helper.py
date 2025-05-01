@@ -55,5 +55,5 @@ def get_ds_specific_query(jsonquery):
                 if(v1_cond and v2_cond):
                     temp_literals.append(literal)
             conditions[ds_name].append({"Literals": temp_literals})
-    return conditions        
+    return conditions
         

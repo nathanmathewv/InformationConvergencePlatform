@@ -23,10 +23,13 @@
             border-radius: 10px;
             box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
             margin-bottom: 30px;
+            text-align: center; /* center all content */
         }
 
         input[type="text"], textarea {
-            width: 100%;
+            width: 90%;
+            max-width: 600px;
+            display: inline-block;
             padding: 10px;
             margin: 10px 0 20px 0;
             border: 1px solid #ccc;
@@ -35,6 +38,7 @@
         }
 
         button {
+            display: inline-block;
             background-color: #3498db;
             color: white;
             padding: 10px 18px;
@@ -42,6 +46,7 @@
             border-radius: 6px;
             cursor: pointer;
             font-size: 15px;
+            margin-top: 10px;
         }
 
         button:hover {
@@ -59,8 +64,8 @@
 <body>
     <h1>Upload Schema</h1>
     <form id="schemaForm">
-        <input type="text" name="file_name" placeholder="Enter schema file name" required><br>
-        <textarea name="xml" rows="10" cols="60" placeholder="Paste XML content here"></textarea><br>
+        <input type="text" name="file_name" placeholder="Enter schema file name" required>
+        <textarea name="xml" rows="10" cols="60" placeholder="Paste XML content here"></textarea>
         <button type="submit">Upload</button>
     </form>
 
@@ -68,8 +73,8 @@
 
     <h1>Run Query</h1>
     <form action="/run_query" method="post">
-        <input type="text" name="schema_file" placeholder="Enter schema filename" required><br>
-        <textarea name="query_json" rows="10" cols="60" placeholder="Paste query JSON here"></textarea><br>
+        <input type="text" name="schema_file" placeholder="Enter schema filename" required>
+        <textarea name="query_json" rows="10" cols="60" placeholder="Paste query JSON here"></textarea>
         <button type="submit">Run Query</button>
     </form>
 

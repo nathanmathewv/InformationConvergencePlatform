@@ -1,82 +1,58 @@
-import json
-from lxml import etree
-from prettytable import PrettyTable
 from conditional_filtering import resolve_queries
 from relational_queries import initialize_sql, run_sql_query, configure_spreadsheet_ds, get_spreadsheet_ds_names, run_spreadsheet_query
 from markdown_queries import initialize_xml, run_xml_query
 from execution_helper import get_display_fields, get_ds_specific_query, get_all_fields
 import os
-# Load XML file
-schema_xml_file = "Schemas/sample_schema_ayush.xml"
-tree = etree.parse(schema_xml_file)
-root = tree.getroot()
+import json
+from flask import render_template
+from lxml import etree
 
-with open('Queries/query3.json', 'r') as file:
-    jsonquery = json.load(file)
+OUTPUT_DIR = "Output"
 
-# Define the namespace
-namespace = {'ns': 'http://iiitb.ac.in/team_5'}
+def run(data, upload_folder):
+    schema_file = data['schema_file']
+    query_json = data['query_json']
 
-# Extract the name and type attributes
-data_dict = {entity.find("ns:name", namespace).text: entity.attrib["type"] for entity in root.findall("ns:entity_type", namespace)}
-# print(data_dict)
+    try:
+        jsonquery = json.loads(query_json)
+    except:
+        return "Invalid JSON", 400
 
-# Initialize SQL DB configurations
-sql_ds_names, sql_db_configs = initialize_sql(root, namespace,jsonquery,data_dict)
-xml_ds_names, xml_files, xml_roots = initialize_xml(root, jsonquery, data_dict, namespace)
+    # Load and parse XML
+    schema_path = os.path.join(upload_folder, schema_file)
 
-spreadsheet_ds_names = get_spreadsheet_ds_names(jsonquery, data_dict)
-spreadsheet_files = configure_spreadsheet_ds(root, namespace)
+    tree = etree.parse(schema_path)
+    root = tree.getroot()
+    namespace = {'ns': 'http://iiitb.ac.in/team_5'}
+    data_dict = {entity.find("ns:name", namespace).text: entity.attrib["type"]
+                    for entity in root.findall("ns:entity_type", namespace)}
 
-specific_query = get_ds_specific_query(jsonquery)
-specific_fields = get_all_fields(jsonquery)
-# print(specific_fields)
+    # Init data sources
+    sql_ds_names, sql_db_configs = initialize_sql(root, namespace, jsonquery, data_dict)
+    xml_ds_names, xml_files, xml_roots = initialize_xml(root, jsonquery, data_dict, namespace)
+    spreadsheet_ds_names = get_spreadsheet_ds_names(jsonquery, data_dict)
+    spreadsheet_files = configure_spreadsheet_ds(root, namespace)
 
-# print(specific_query,specific_fields)
+    specific_query = get_ds_specific_query(jsonquery)
+    specific_fields = get_all_fields(jsonquery)
 
-merged_df = []
+    merged_df = []
 
-# Execute queries for each DSName
-for entry in specific_query.items():
-    ds_name = entry[0]
-    conditions = entry[1]
-    # print(ds_name, conditions)
-    if ds_name in sql_ds_names and ds_name in sql_db_configs:
-        df = run_sql_query(conditions, sql_db_configs[ds_name], ds_name, specific_fields[ds_name])
-    elif ds_name in xml_ds_names:
-        ds_query = specific_query[ds_name]
-        df = run_xml_query(conditions, xml_files, ds_name, xml_roots[ds_name], specific_fields[ds_name])
-    elif ds_name in spreadsheet_ds_names:
-        df = run_spreadsheet_query(ds_name, spreadsheet_files[ds_name], specific_fields[ds_name])
+    for ds_name, conditions in specific_query.items():
+        if ds_name in sql_ds_names and ds_name in sql_db_configs:
+            df = run_sql_query(conditions, sql_db_configs[ds_name], ds_name, specific_fields[ds_name])
+        elif ds_name in xml_ds_names:
+            df = run_xml_query(conditions, xml_files, ds_name, xml_roots[ds_name], specific_fields[ds_name])
+        elif ds_name in spreadsheet_ds_names:
+            df = run_spreadsheet_query(ds_name, spreadsheet_files[ds_name], specific_fields[ds_name])
+        merged_df.append(df)
 
-    # print(df)
-    #write df to csv
-    # df.to_csv(f"{ds_name}.csv", index=False)
-    
-    merged_df.append(df)
+    merged_df = resolve_queries(jsonquery, merged_df)
+    to_display = get_display_fields(jsonquery)
+    merged_df = merged_df[to_display]
 
-merged_df = resolve_queries(jsonquery, merged_df)
-to_display = get_display_fields(jsonquery)
+    merged_df.to_csv(os.path.join(OUTPUT_DIR,'output.csv'), index=False)
+    merged_df.to_json(os.path.join(OUTPUT_DIR,'output.json'), orient="records", indent=4)
+    print([merged_df.to_html(classes='data')])
 
-merged_df = merged_df[to_display]
-# print(merged_df)
-
-json_output = merged_df.to_json(orient="records", indent=4)
-
-# Save it to a file
-with open("output.json", "w") as f:
-    f.write(json_output)
-
-table = PrettyTable()
-table.field_names = merged_df.columns.tolist()
-
-for row in merged_df.itertuples(index=False):
-    table.add_row(row)
-
-print(table)
-
-# save in txt file
-with open("output.txt", "w") as f:
-    f.write(str(table))
-# save in csv
-merged_df.to_csv("output.csv", index = False)
+    return render_template("result.html", tables=[merged_df.to_html(classes='data')][-1], titles=merged_df.columns.values)

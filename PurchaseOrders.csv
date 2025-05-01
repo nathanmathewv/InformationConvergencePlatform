@@ -1,3 +1,0 @@
-PurchaseOrders.PurchaseOrder/OrderID,PurchaseOrders.PurchaseOrder/CustomerID,PurchaseOrders.PurchaseOrder/OrderPlaced/month,PurchaseOrders.PurchaseOrder/Products/Product/Price,PurchaseOrders.PurchaseOrder/Products/Product
-['5'],['666666609'],['10'],['45107'],"[{'ProductID': '42', 'ProductName': 'Microphone', 'Quantity': '2', 'Price': '45107'}]"
-['7'],['555555501'],['3'],"['24248', '43669']","[{'ProductID': '11', 'ProductName': 'Monitor', 'Quantity': '1', 'Price': '24248'}, {'ProductID': '2', 'ProductName': 'Phone', 'Quantity': '3', 'Price': '43669'}]"

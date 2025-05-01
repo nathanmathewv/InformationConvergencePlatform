@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<unified_schema xmlns="http://iiitb.ac.in/team_5"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://iiitb.ac.in/team_5 univ_schema.xsd">
+<?xml version='1.0' encoding='UTF-8'?>
+<unified_schema xmlns='http://iiitb.ac.in/team_5'
+      xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+      xsi:schemaLocation='http://iiitb.ac.in/team_5 univ_schema.xsd'>
     
-    <entity_type type = "SQL">
+    <entity_type type = 'SQL'>
         <id>1</id>
         <name>customer</name>
         <ds>
@@ -18,7 +18,7 @@
         </ds>
     </entity_type>
 
-    <entity_type type = "SQL">
+    <entity_type type = 'SQL'>
         <id>5</id>
         <name>region</name>
         <ds>
@@ -33,7 +33,7 @@
         </ds>
     </entity_type>
 
-    <entity_type type = "Spreadsheet">
+    <entity_type type = 'Spreadsheet'>
         <id>2</id>
         <name>Sellers</name>
         <ds>
@@ -42,7 +42,7 @@
         </ds>
     </entity_type>
 
-    <entity_type type = "XML">
+    <entity_type type = 'XML'>
         <id>3</id>
         <name>PurchaseOrders</name>
         <ds>
@@ -51,7 +51,7 @@
         </ds> 
     </entity_type>
 
-    <entity_type type = "XML">
+    <entity_type type = 'XML'>
         <id>7</id>
         <name>Products</name>
         <ds>
