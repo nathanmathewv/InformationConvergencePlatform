@@ -1,7 +1,5 @@
 # Information Convergence Platform
 
-**Data Modeling Project**
-
 The Information Convergence Platform is a data modeling project designed to integrate and query data from various sources, including SQL databases, XML files, and spreadsheets. It provides a unified interface to upload schemas, execute queries, and view results in multiple formats.
 
 ## Features
