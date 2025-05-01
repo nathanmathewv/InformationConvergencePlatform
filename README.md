@@ -1,7 +1,3 @@
-Certainly! Based on the provided information, here's a comprehensive `README.md` for the [InformationConvergencePlatform](https://github.com/nathanmathewv/InformationConvergencePlatform) project:
-
----
-
 # Information Convergence Platform
 
 **Data Modeling Project**
@@ -42,7 +38,6 @@ InformationConvergencePlatform/
 - **Output/**: Stores the output files generated after query execution.
 - **Queries/**: JSON files defining the queries to be executed.
 - **Schemas/**: XML schema files defining the data structures.
-- **file_dump/**: Temporary storage for intermediate files.
 - **templates/**: HTML templates for the web interface.
 - **app.py**: Main Flask application.
 - **app_helper.py**: Helper functions for the Flask app.
