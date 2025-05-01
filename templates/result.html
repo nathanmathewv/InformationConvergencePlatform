@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query Result</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Query Output</h1>
+    {{ tables|safe }}
+    <p><a href="/output.csv" download>Download CSV</a></p>
+    <p><a href="/output.json" download>Download JSON</a></p>
+</body>
+</html>

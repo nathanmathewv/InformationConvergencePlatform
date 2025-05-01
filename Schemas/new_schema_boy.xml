@@ -1,4 +1,4 @@
-a = """<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <unified_schema xmlns='http://iiitb.ac.in/team_5'
       xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
       xsi:schemaLocation='http://iiitb.ac.in/team_5 univ_schema.xsd'>
@@ -59,6 +59,4 @@ a = """<?xml version='1.0' encoding='UTF-8'?>
             <root>Product</root>
         </ds> 
     </entity_type>
-</unified_schema>"""
-
-print(repr(a))
+</unified_schema>
