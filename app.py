@@ -4,10 +4,11 @@ from app_helper import upload
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'Schemas'
+app.config['OUTPUT_FOLDER'] = 'Output'
 
 @app.route('/<path:filename>')
 def download_file(filename):
-    return send_from_directory('.', filename)
+    return send_from_directory(app.config['OUTPUT_FOLDER'], filename)
 
 @app.route('/')
 def index():
