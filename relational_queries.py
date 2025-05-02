@@ -71,7 +71,7 @@ def run_sql_query(conditions, sql_db, ds_name, fields):
 
     return df
 
-def configure_spreadsheet_ds(root, namespace):
+def configure_spreadsheet_ds(root, namespace, jsonquery, data_dict):
     spreadsheet_files = {}
     for entity in root.findall("ns:entity_type", namespace):
         if entity.attrib["type"] == "Spreadsheet":
@@ -79,7 +79,8 @@ def configure_spreadsheet_ds(root, namespace):
             file = entity.find("ns:ds/ns:file", namespace).text
             sheet = entity.find("ns:ds/ns:sheet", namespace).text
             spreadsheet_files[name] = {"file": file, "sheet": sheet}
-    return spreadsheet_files
+    spreadsheet_ds_names = get_spreadsheet_ds_names(jsonquery, data_dict)
+    return spreadsheet_files, spreadsheet_ds_names
 
 def get_spreadsheet_ds_names(jsonquery, data_dict):
     return [entry["DSName"] for entry in jsonquery["Select"] if data_dict.get(entry["DSName"]) == "Spreadsheet"]

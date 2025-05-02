@@ -1,3 +1,15 @@
+<<<<<<< HEAD
 customer.fname,customer.lname,region.rname,PurchaseOrders.PurchaseOrder/OrderID,PurchaseOrders.PurchaseOrder/CustomerID,PurchaseOrders.PurchaseOrder/OrderPlaced/month
 Bob,Wilson,West,['6'],['206'],['5']
 Mona,Jones,North,['8'],['208'],['5']
+=======
+PurchaseOrders.PurchaseOrder/OrderID,PurchaseOrders.PurchaseOrder/SellerID,Sellers.SellerName,Products.Product/Price
+['9'],['6'],Seller_6,['45000']
+['10'],['8'],Seller_8,['62000']
+['7'],['9'],Seller_9,['38000']
+['7'],['9'],Seller_9,['95000']
+['5'],['7'],Seller_7,['45000']
+['1'],['1'],Seller_1,['95000']
+['3'],['10'],Seller_10,['38000']
+['2'],['5'],Seller_5,['62000']
+>>>>>>> faf353ea086049b8deb9984b7f234f8fada04b29

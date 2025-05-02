@@ -1,5 +1,6 @@
 [
     {
+<<<<<<< HEAD
         "customer.fname":"Bob",
         "customer.lname":"Wilson",
         "region.rname":"West",
@@ -25,6 +26,101 @@
         ],
         "PurchaseOrders.PurchaseOrder\/OrderPlaced\/month":[
             "5"
+=======
+        "PurchaseOrders.PurchaseOrder\/OrderID":[
+            "9"
+        ],
+        "PurchaseOrders.PurchaseOrder\/SellerID":[
+            "6"
+        ],
+        "Sellers.SellerName":"Seller_6",
+        "Products.Product\/Price":[
+            "45000"
+        ]
+    },
+    {
+        "PurchaseOrders.PurchaseOrder\/OrderID":[
+            "10"
+        ],
+        "PurchaseOrders.PurchaseOrder\/SellerID":[
+            "8"
+        ],
+        "Sellers.SellerName":"Seller_8",
+        "Products.Product\/Price":[
+            "62000"
+        ]
+    },
+    {
+        "PurchaseOrders.PurchaseOrder\/OrderID":[
+            "7"
+        ],
+        "PurchaseOrders.PurchaseOrder\/SellerID":[
+            "9"
+        ],
+        "Sellers.SellerName":"Seller_9",
+        "Products.Product\/Price":[
+            "38000"
+        ]
+    },
+    {
+        "PurchaseOrders.PurchaseOrder\/OrderID":[
+            "7"
+        ],
+        "PurchaseOrders.PurchaseOrder\/SellerID":[
+            "9"
+        ],
+        "Sellers.SellerName":"Seller_9",
+        "Products.Product\/Price":[
+            "95000"
+        ]
+    },
+    {
+        "PurchaseOrders.PurchaseOrder\/OrderID":[
+            "5"
+        ],
+        "PurchaseOrders.PurchaseOrder\/SellerID":[
+            "7"
+        ],
+        "Sellers.SellerName":"Seller_7",
+        "Products.Product\/Price":[
+            "45000"
+        ]
+    },
+    {
+        "PurchaseOrders.PurchaseOrder\/OrderID":[
+            "1"
+        ],
+        "PurchaseOrders.PurchaseOrder\/SellerID":[
+            "1"
+        ],
+        "Sellers.SellerName":"Seller_1",
+        "Products.Product\/Price":[
+            "95000"
+        ]
+    },
+    {
+        "PurchaseOrders.PurchaseOrder\/OrderID":[
+            "3"
+        ],
+        "PurchaseOrders.PurchaseOrder\/SellerID":[
+            "10"
+        ],
+        "Sellers.SellerName":"Seller_10",
+        "Products.Product\/Price":[
+            "38000"
+        ]
+    },
+    {
+        "PurchaseOrders.PurchaseOrder\/OrderID":[
+            "2"
+        ],
+        "PurchaseOrders.PurchaseOrder\/SellerID":[
+            "5"
+        ],
+        "Sellers.SellerName":"Seller_5",
+        "Products.Product\/Price":[
+            "62000"
+>>>>>>> faf353ea086049b8deb9984b7f234f8fada04b29
         ]
     }
 ]
