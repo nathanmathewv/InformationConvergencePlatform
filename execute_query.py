@@ -1,5 +1,5 @@
 from conditional_filtering import resolve_queries
-from relational_queries import initialize_sql, run_sql_query, configure_spreadsheet_ds, get_spreadsheet_ds_names, run_spreadsheet_query
+from relational_queries import initialize_sql, run_sql_query, configure_spreadsheet_ds, run_spreadsheet_query
 from markdown_queries import initialize_xml, run_xml_query
 from execution_helper import get_display_fields, get_ds_specific_query, get_all_fields
 import os
@@ -30,8 +30,7 @@ def run(data, upload_folder):
     # Init data sources
     sql_ds_names, sql_db_configs = initialize_sql(root, namespace, jsonquery, data_dict)
     xml_ds_names, xml_files, xml_roots = initialize_xml(root, jsonquery, data_dict, namespace)
-    spreadsheet_ds_names = get_spreadsheet_ds_names(jsonquery, data_dict)
-    spreadsheet_files = configure_spreadsheet_ds(root, namespace)
+    spreadsheet_files, spreadsheet_ds_names = configure_spreadsheet_ds(root, namespace, jsonquery, data_dict)
 
     specific_query = get_ds_specific_query(jsonquery)
     specific_fields = get_all_fields(jsonquery)
